@@ -94,7 +94,7 @@ const FreelancerViewProjectdetails = (props) => {
                       className="avatar-lg rounded-circle"
                     />
                     <p>Hannah Finn - Client</p>
-                    <Link to="/freelancer-chats" className="btn btn-chat">
+                    <Link to="/chats" className="btn btn-chat">
                       Chat Now
                     </Link>
                   </div>

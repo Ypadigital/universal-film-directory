@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SideBar from "../../Common/SideBar";
-import { Developer_01, Developer_03, Img } from "../../imagepath";
+import { Developer_01 } from "../../imagepath";
+import ReactSummernote from "react-summernote";
+import TableEdSkill from "../../Common/TableEdSkill";
 const FreelancerSettings = (props) => {
   useEffect(() => {
     document.body.className = "dashboard-page";
@@ -56,41 +58,30 @@ const FreelancerSettings = (props) => {
                       <input type="email" className="form-control" />
                     </div>
                     <div className="form-group col-md-6">
-                      <label>Dispaly Name</label>
-                      <input type="text" className="form-control" />
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label>Designation</label>
-                      <input type="email" className="form-control" />
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label>Hourly Rate</label>
-                      <input type="text" className="form-control" />
-                      <p className="light-pink-text mb-0">
-                        Provide your hourly rate without currency symbol
-                      </p>
-                    </div>
-                    <div className="form-group col-md-6">
                       <label>Contact Number</label>
                       <input type="email" className="form-control" />
                     </div>
+                    <div className="form-group col-md-6">
+                      <label>Tell the world what you do</label>
+                      <input type="text" className="form-control" />
+                    </div>
+                    <div className="form-group col-md-6">
+                      <label>Service you offer</label>
+                      <select name="price" className="form-control select">
+                        <option value={0}>Photographer</option>
+                        <option value={1}>Film Maker</option>
+                        <option value={1}>Film Director</option>
+                        <option value={1}>Actor</option>
+                        <option value={1}>Animater</option>
+                      </select>
+                    </div>
+
                     <div className="form-group col-md-6">
                       <label>Gender</label>
                       <select name="price" className="form-control select">
                         <option value={0}>Male</option>
                         <option value={1}>Female</option>
                       </select>
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label>Type</label>
-                      <select name="price" className="form-control select">
-                        <option value={0}>Select Freelancer Type</option>
-                        <option value={1}>Freelancer</option>
-                      </select>
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label>Language </label>
-                      <input type="text" className="form-control" />
                     </div>
                   </div>
                   <div className="form-row pro-pad pt-0">
@@ -108,21 +99,6 @@ const FreelancerSettings = (props) => {
                         </label>
                       </div>
                       <p>Image size 300*300</p>
-                    </div>
-                    <div className="form-group col-md-6 pro-pic">
-                      <label>Banner Image</label>
-                      <div className="d-flex align-items-center">
-                        <div className="upload-images">
-                          <img src={Developer_03} alt="user" />
-                          <div className="btn btn-icon btn-danger btn-sm">
-                            <i className="far fa-trash-alt" />
-                          </div>
-                        </div>
-                        <label className="file-upload image-upbtn ms-3">
-                          Change Image <input type="file" />
-                        </label>
-                      </div>
-                      <p>Image size 1024*100</p>
                     </div>
                   </div>
                 </div>
@@ -156,150 +132,77 @@ const FreelancerSettings = (props) => {
                   </div>
                 </div>
               </div>
+              {/* price */}
               <div className="card">
                 <div className="pro-head">
-                  <h3 className="pro-title without-border mb-0">Overview</h3>
+                  <h3 className="pro-title without-border mb-0">Rate</h3>
                 </div>
-                <div className="pro-body">
-                  <div className="row">
-                    <div className="form-group col-md-12">
-                      <textarea
-                        className="form-control"
-                        rows={5}
-                        defaultValue={""}
-                      />
-                    </div>
-                  </div>
+                <div className="payment-process card-body">
+                  <ul>
+                    <li className="pt-0">
+                      <label className="total"> Currency</label>
+                      <div className="sort-by sort-show">
+                        <span className="sortby-fliter">
+                          <select className="select">
+                            <option className="sorting">Dollar</option>
+                            <option className="sorting">Euro</option>
+                            <option className="sorting">Yen</option>
+                          </select>
+                        </span>
+                      </div>
+                    </li>
+                    <li>
+                      <label className="total">hourly rate</label>
+                      <div className="input-group dep-amt mb-3">
+                        <div className="input-group-prepend">
+                          <span className="input-group-text" id="basic-addon1">
+                            $
+                          </span>
+                        </div>
+                        <input
+                          type="text"
+                          className="form-control"
+                          defaultValue={2100}
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                    </li>
+                    <li className="tot-border">
+                      <label className="total">platform service fee</label>
+                      <label className="price">$63.30</label>
+                    </li>
+                    <li>
+                      <label className="total">Total</label>
+                      <label className="price">$2,163.30</label>
+                    </li>
+                  </ul>
                 </div>
               </div>
+
               <div className="form-row">
-                <div className="col-md-12 col-xl-4 d-flex">
-                  <div className="pro-card flex-fill mb-3">
-                    <div className="pro-head">
-                      <h3 className="pro-title without-border mb-0">Skills</h3>
-                      <a href="#" className="btn fund-btn skill-add">
-                        Add More
-                      </a>
-                    </div>
-                    <div className="pro-body skill-info">
-                      <div className="form-row align-items-center skill-cont">
-                        <div className="form-group col-md-10">
-                          <input
-                            type="text"
-                            className="form-control"
-                            defaultValue="Front End Developer"
-                          />
-                        </div>
-                        <div className="form-group col-md-2">
-                          <a href="#" className="btn trash-icon">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="form-row align-items-center skill-cont">
-                        <div className="form-group col-md-10">
-                          <input
-                            type="text"
-                            className="form-control"
-                            defaultValue="Front End Developer"
-                          />
-                        </div>
-                        <div className="form-group col-md-2">
-                          <a href="#" className="btn trash-icon">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="form-row align-items-center skill-cont">
-                        <div className="form-group col-md-10">
-                          <input
-                            type="text"
-                            className="form-control"
-                            defaultValue="Front End Developer"
-                          />
-                        </div>
-                        <div className="form-group col-md-2">
-                          <a href="#" className="btn trash-icon">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="form-row align-items-center skill-cont">
-                        <div className="form-group col-md-10">
-                          <input
-                            type="text"
-                            className="form-control"
-                            defaultValue="Front End Developer"
-                          />
-                        </div>
-                        <div className="form-group col-md-2">
-                          <a href="#" className="btn trash-icon">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="form-row align-items-center skill-cont">
-                        <div className="form-group col-md-10">
-                          <input
-                            type="text"
-                            className="form-control"
-                            defaultValue="Front End Developer"
-                          />
-                        </div>
-                        <div className="form-group col-md-2">
-                          <a href="#" className="btn trash-icon">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="form-row align-items-center skill-cont">
-                        <div className="form-group col-md-10">
-                          <input
-                            type="text"
-                            className="form-control"
-                            defaultValue="Front End Developer"
-                          />
-                        </div>
-                        <div className="form-group col-md-2">
-                          <a href="#" className="btn trash-icon">
-                            <i className="far fa-trash-alt" />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-12 col-xl-8">
+                <div className="col-md-12 col-xl-6">
                   <div className="card">
                     <div className="pro-head">
-                      <h3 className="pro-title without-border mb-0">
-                        Awards / Certificates
-                      </h3>
+                      <h3 className="pro-title without-border mb-0">Skills</h3>
                       <a href="#" className="btn fund-btn add-award">
                         Add More
                       </a>
                     </div>
-                    <div className="pro-body  award-info">
-                      <div className="form-row align-items-center award-cont">
-                        <div className="form-group col-md-2">
-                          <img
-                            alt="profile image"
-                            src={Img}
-                            className="avatar-medium"
-                          />
-                        </div>
-                        <div className="form-group col-md-5">
+                    <div className="pro-body  lang-info">
+                      <div className="form-row align-items-center lang-cont">
+                        <div className="form-group col-md-7">
                           <input
                             type="text"
                             className="form-control"
-                            defaultValue="Best Game Designer"
+                            defaultValue="Photographer"
                           />
                         </div>
                         <div className="form-group col-md-3">
                           <input
                             type="text"
-                            className="form-control datetimepicker"
-                            defaultValue="05/10/2020"
+                            className="form-control"
+                            defaultValue={"100%"}
                           />
                         </div>
                         <div className="form-group col-md-2">
@@ -308,26 +211,19 @@ const FreelancerSettings = (props) => {
                           </a>
                         </div>
                       </div>
-                      <div className="form-row align-items-center award-cont">
-                        <div className="form-group col-md-2">
-                          <img
-                            alt="profile image"
-                            src={Img}
-                            className="avatar-medium"
-                          />
-                        </div>
-                        <div className="form-group col-md-5">
+                      <div className="form-row align-items-center lang-cont">
+                        <div className="form-group col-md-7">
                           <input
                             type="text"
                             className="form-control"
-                            defaultValue="Best Game Designer"
+                            defaultValue="Fashion Designer"
                           />
                         </div>
                         <div className="form-group col-md-3">
                           <input
                             type="text"
-                            className="form-control datetimepicker"
-                            defaultValue="05/10/2020"
+                            className="form-control"
+                            defaultValue={"30%"}
                           />
                         </div>
                         <div className="form-group col-md-2">
@@ -336,26 +232,19 @@ const FreelancerSettings = (props) => {
                           </a>
                         </div>
                       </div>
-                      <div className="form-row align-items-center award-cont">
-                        <div className="form-group col-md-2">
-                          <img
-                            alt="profile image"
-                            src={Img}
-                            className="avatar-medium"
-                          />
-                        </div>
-                        <div className="form-group col-md-5">
+                      <div className="form-row align-items-center lang-cont">
+                        <div className="form-group col-md-7">
                           <input
                             type="text"
                             className="form-control"
-                            defaultValue="Best Game Designer"
+                            defaultValue="Film Maker"
                           />
                         </div>
                         <div className="form-group col-md-3">
                           <input
                             type="text"
-                            className="form-control datetimepicker"
-                            defaultValue="05/10/2020"
+                            className="form-control"
+                            defaultValue={"90%"}
                           />
                         </div>
                         <div className="form-group col-md-2">
@@ -366,6 +255,8 @@ const FreelancerSettings = (props) => {
                       </div>
                     </div>
                   </div>
+                </div>
+                <div className="col-md-12 col-xl-6">
                   <div className="card">
                     <div className="pro-head">
                       <h3 className="pro-title without-border mb-0">
@@ -388,7 +279,7 @@ const FreelancerSettings = (props) => {
                           <input
                             type="text"
                             className="form-control"
-                            defaultValue={100}
+                            defaultValue={"76%"}
                           />
                         </div>
                         <div className="form-group col-md-2">
@@ -409,7 +300,7 @@ const FreelancerSettings = (props) => {
                           <input
                             type="text"
                             className="form-control"
-                            defaultValue={90}
+                            defaultValue={"90%"}
                           />
                         </div>
                         <div className="form-group col-md-2">
@@ -430,7 +321,7 @@ const FreelancerSettings = (props) => {
                           <input
                             type="text"
                             className="form-control"
-                            defaultValue={90}
+                            defaultValue={"22%"}
                           />
                         </div>
                         <div className="form-group col-md-2">
@@ -443,107 +334,41 @@ const FreelancerSettings = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="card">
-                <div className="pro-head">
-                  <h3 className="pro-title without-border mb-0">Experience</h3>
-                  <a href="#" className="btn fund-btn add-exp">
-                    Add More
-                  </a>
-                </div>
-                <div className="pro-body">
-                  <div className="exp-info">
-                    <div className="row exp-cont">
-                      <div className="form-group col-md-6">
-                        <label>Title</label>
-                        <input type="text" className="form-control" />
-                      </div>
-                      <div className="form-group col-md-6">
-                        <label>Company name</label>
-                        <input type="text" className="form-control" />
-                      </div>
-                      <div className="form-group col-md-6">
-                        <label>Start date</label>
-                        <input
-                          type="text"
-                          className="form-control datetimepicker"
-                          placeholder="Select Date"
-                        />
-                      </div>
-                      <div className="form-group col-md-6">
-                        <label>End Date</label>
-                        <input
-                          type="text"
-                          className="form-control datetimepicker"
-                          placeholder="Select Date"
-                        />
-                      </div>
-                      <div className="form-group col-md-12">
-                        <label className="custom_check">
-                          <input type="checkbox" name="rem_password" />
-                          <span className="checkmark" /> I'm currently working
-                          here
-                        </label>
-                      </div>
-                      <div className="form-group col-md-12">
-                        <label>Summary</label>
-                        <textarea
-                          className="form-control"
-                          rows={5}
-                          defaultValue={""}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* education */}
+              <TableEdSkill title="Education" main={true} />
+              <TableEdSkill title="Experiance" main={false} />
+              {/* Shot desc */}
               <div className="card">
                 <div className="pro-head">
                   <h3 className="pro-title without-border mb-0">
-                    Educational Details
+                    Short cover letter
                   </h3>
-                  <a href="#" className="btn fund-btn">
-                    Add More Skills
-                  </a>
                 </div>
                 <div className="pro-body">
                   <div className="row">
                     <div className="form-group col-md-12">
-                      <label>Degree Title</label>
-                      <input type="text" className="form-control" />
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label>University/College</label>
-                      <select name="price" className="form-control select">
-                        <option value={0}>Select University/College </option>
-                        <option value={1}>University</option>
-                        <option value={2}>University</option>
-                      </select>
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label>Start year</label>
-                      <input
-                        type="text"
-                        className="form-control datetimepicker"
-                      />
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label>End year</label>
-                      <input
-                        type="text"
-                        className="form-control datetimepicker"
-                      />
-                    </div>
-                    <div className="form-group col-md-12">
-                      <label>Summary</label>
-                      <textarea
-                        className="form-control"
-                        rows={5}
-                        defaultValue={""}
+                      <ReactSummernote
+                        value="Default value"
+                        options={{
+                          lang: "ru-RU",
+                          height: 350,
+                          dialogsInBody: true,
+                          toolbar: [
+                            ["style", ["style"]],
+                            ["font", ["bold", "underline", "clear"]],
+                            ["fontname", ["fontname"]],
+                            ["para", ["ul", "ol", "paragraph"]],
+                            ["table", ["table"]],
+                            ["insert", ["link", "picture", "video"]],
+                            ["view", ["fullscreen", "codeview"]],
+                          ],
+                        }}
                       />
                     </div>
                   </div>
                 </div>
               </div>
+
               <div className="card">
                 <div className="pro-head">
                   <h3 className="pro-title without-border mb-0">

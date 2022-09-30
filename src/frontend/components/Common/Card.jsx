@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { EmployData } from "../Data/EmployData";
 import { FreelancerData } from "../Data/UserDatas";
-import { Flags_us, Img_01, Img_03 } from "../imagepath";
 import Rating from "./Ratings";
 
 export const CardFeedBacks = ({ data }) => {
@@ -11,7 +10,7 @@ export const CardFeedBacks = ({ data }) => {
     <div className="about-author">
       <div className="about-author-img">
         <div className="author-img-wrap">
-          <img className="img-fluid" alt="" src={Img_03} />
+          <img className="img-fluid" alt="" src={user.image} />
         </div>
       </div>
       <div className="author-details">
@@ -19,7 +18,7 @@ export const CardFeedBacks = ({ data }) => {
           {user.name}
         </a>
         <div className="rating">
-          <span className="average-rating">4.6</span>
+          <span className="average-rating">( 4.5 )</span>
           <Rating value={3} />
         </div>
         <p className="mb-0">{data.desc}</p>

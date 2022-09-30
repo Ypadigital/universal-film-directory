@@ -12,6 +12,7 @@ import {
   company_img4,
   company_img1,
 } from "../imagepath";
+import ConnectWallet from "../Common/Modals/ConnectWallet";
 
 const Header = (props) => {
   const [isOpen, setisopen] = useState(false);
@@ -61,7 +62,7 @@ const Header = (props) => {
               </a>
             </div>
             <ul className="main-nav">
-              <li className={pathname === "index" ? "active" : ""}>
+              <li className={pathname === "/" ? "active" : ""}>
                 <Link to="/">Home</Link>
               </li>
               <li className={pathname === "about" ? "active" : ""}>
@@ -71,32 +72,7 @@ const Header = (props) => {
                 <Link to="/freelancer">Freelancers</Link>
               </li>
               <li className={pathname === "project" ? "active" : ""}>
-                <Link to="/project">Projects</Link>
-              </li>
-
-              <li
-                className={`has-submenu ${
-                  pathname === "blog-list" ||
-                  pathname === "blog-grid" ||
-                  pathname === "blog-details"
-                    ? "active"
-                    : ""
-                }`}
-              >
-                <a href="">
-                  Blog <i className="fas fa-chevron-down" />
-                </a>
-                <ul className="submenu">
-                  <li className={pathname === "blog-list" ? "active" : ""}>
-                    <Link to="/blog-list">Blog List</Link>
-                  </li>
-                  <li className={pathname === "blog-grid" ? "active" : ""}>
-                    <Link to="/blog-grid">Blog Grid</Link>
-                  </li>
-                  <li className={pathname === "blog-details" ? "active" : ""}>
-                    <Link to="/blog-details">Blog Details</Link>
-                  </li>
-                </ul>
+                <Link to="/project">VIP's</Link>
               </li>
             </ul>
           </div>
@@ -132,11 +108,9 @@ const Header = (props) => {
                 <Link className="dropdown-item" to="/dashboard">
                   <i className="fa fa-th-large" /> Employe Dashboard
                 </Link>
-                <Link className="dropdown-item" to="/login">
-                  <i className="fas fa-lock" /> Login
-                </Link>
-                <Link className="dropdown-item" to="/register">
-                  <i className="fas fa-user" /> Register
+
+                <Link className="dropdown-item" to="/kcy">
+                  <i className="fas fa-user" /> KCY
                 </Link>
                 <Link className="dropdown-item" to="/">
                   <i className="material-icons">power_settings_new</i> Logout
@@ -145,7 +119,13 @@ const Header = (props) => {
             </li>
             {/* /User Menu */}
             <li>
-              <button className="login-btn">Connect Wallet</button>
+              <a
+                data-bs-toggle="modal"
+                href="#connectwallet"
+                className="login-btn"
+              >
+                Connect Wallet
+              </a>
             </li>
           </ul>
 
@@ -213,6 +193,7 @@ const Header = (props) => {
           )} */}
         </nav>
       </header>
+      <ConnectWallet />
       {/* /Header */}
     </>
   );

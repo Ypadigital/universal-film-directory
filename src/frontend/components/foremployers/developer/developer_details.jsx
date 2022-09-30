@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import StickyBox from "react-sticky-box";
 import { CardFeedBacks } from "../../Common/Card";
 import HireModal from "../../Common/Modals/HireModal";
+import InvatationModal from "../../Common/Modals/InvatationModal";
 import {
   FreelancerData,
   FrelancerLanguages,
@@ -147,16 +148,20 @@ const DeveloperDetails = (props) => {
             <div className="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
               <StickyBox offsetTop={20} offsetBottom={20}>
                 {/* Follow Widget */}
-                <div className="pro-post widget-box follow-widget">
-                  <button className="btn follow-btn">+ Follow</button>
-                  <ul className="follow-posts pro-post">
+                <div className="pro-post widget-box about-widget">
+                  <h4 className="pro-title mb-0">About Me</h4>
+                  <ul className="latest-posts pro-content">
                     <li>
-                      <p>Following</p>
-                      <h6>{freelancer.following}</h6>
+                      <p>Gender</p>
+                      <h6>{freelancer.gender}</h6>
                     </li>
                     <li>
-                      <p>Followers</p>
-                      <h6>{freelancer.followes}</h6>
+                      <p>Experience</p>
+                      <h6>{freelancer.experiance}</h6>
+                    </li>
+                    <li>
+                      <p>Location</p>
+                      <h6>{freelancer.location}</h6>
                     </li>
                   </ul>
                 </div>
@@ -184,23 +189,7 @@ const DeveloperDetails = (props) => {
                 </div>
                 {/* /Language Widget */}
                 {/* About Widget */}
-                <div className="pro-post widget-box about-widget">
-                  <h4 className="pro-title mb-0">About Me</h4>
-                  <ul className="latest-posts pro-content">
-                    <li>
-                      <p>Gender</p>
-                      <h6>{freelancer.gender}</h6>
-                    </li>
-                    <li>
-                      <p>Experience</p>
-                      <h6>{freelancer.experiance}</h6>
-                    </li>
-                    <li>
-                      <p>Location</p>
-                      <h6>{freelancer.location}</h6>
-                    </li>
-                  </ul>
-                </div>
+
                 {/* /About Widget */}
                 {/* Categories */}
                 <div className="pro-post category-widget">
@@ -268,7 +257,7 @@ const DeveloperDetails = (props) => {
       </div>
       {/* /Page Content */}
       {/* The Modal */}
-      <HireModal freelancer={freelancer} />
+      <InvatationModal />
       {/* /The Modal */}
     </>
   );
