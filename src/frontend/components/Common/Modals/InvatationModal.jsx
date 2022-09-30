@@ -6,7 +6,7 @@ function InvatationModal() {
       <div className="modal-dialog modal-dialog-centered modal-md">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">INVITE FREELANCER</h4>
+            <h4 className="modal-title">HIRE A FREELANCER</h4>
             <span className="modal-close">
               <a href="#" data-bs-dismiss="modal" aria-label="Close">
                 <i className="far fa-times-circle orange-text" />
@@ -59,48 +59,6 @@ function InvatationModal() {
                           <input type="radio" defaultValue="fix" name="fix" />
                           <span className="checkmark" /> Hourly Rate
                         </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Hire for</label>
-                      <div className="radio">
-                        <label className="custom_radio">
-                          <input type="radio" defaultValue="fix" name="fix" />
-                          <span className="checkmark" /> Fixed Price
-                        </label>
-                        <label className="custom_radio">
-                          <input type="radio" defaultValue="fix" name="fix" />
-                          <span className="checkmark" /> Hourly Rate
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Budget</label>
-                      <div className="form-row">
-                        <div className="col-6">
-                          <div className="input-group">
-                            <div className="input-group-prepend bg-pink">
-                              <span className="input-group-text" id="basic-add">
-                                $
-                              </span>
-                            </div>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder={20.0}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-6">
-                          <select className="form-control select">
-                            <option value={0}>USD</option>
-                            <option value={0}>USD</option>
-                          </select>
-                        </div>
                       </div>
                     </div>
                   </div>

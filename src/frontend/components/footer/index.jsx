@@ -35,7 +35,7 @@ class Footer extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-2">
+                <div className="col-lg-3">
                   <div className="footer-widget footer-menu">
                     <h2 className="footer-title">Useful Links</h2>
                     <ul>
@@ -51,7 +51,7 @@ class Footer extends Component {
                     </ul>
                   </div>
                 </div>
-                <div className="col-lg-2">
+                <div className="col-lg-3">
                   <div className="footer-widget footer-menu">
                     <h2 className="footer-title">Help &amp; Support</h2>
                     <ul>
@@ -67,7 +67,7 @@ class Footer extends Component {
                     </ul>
                   </div>
                 </div>
-                <div className="col-lg-2">
+                <div className="col-lg-3">
                   <div className="footer-widget footer-menu">
                     <h2 className="footer-title">Other Links</h2>
                     <ul>
@@ -83,32 +83,6 @@ class Footer extends Component {
                         <a href="project.html">Project</a>
                       </li>
                     </ul>
-                  </div>
-                </div>
-                <div className="col-lg-3">
-                  <div className="footer-widget footer-menu">
-                    <h2 className="footer-title">Mobile Application</h2>
-
-                    <div className="row g-2">
-                      <div className="col">
-                        <a href="#">
-                          <img
-                            className="img-fluid"
-                            src={Appstore}
-                            alt="app-store"
-                          />
-                        </a>
-                      </div>
-                      <div className="col">
-                        <a href="#">
-                          <img
-                            className="img-fluid"
-                            src={Googleplay}
-                            alt="google-play"
-                          />
-                        </a>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

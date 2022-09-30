@@ -1,47 +1,37 @@
-import React , {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import StickyBox from "react-sticky-box";
-import { Sidebar } from '../sidebar';
-    
-const Transactionhistory = (props) => {   
-    useEffect(() => {
-      document.body.className = 'dashboard-page';
-      return () => { document.body.className = ''; }
-    });  
-        
+import SideBar from "../../Common/SideBar";
+
+const Transactionhistory = (props) => {
+  useEffect(() => {
+    document.body.className = "dashboard-page";
+    return () => {
+      document.body.className = "";
+    };
+  });
+
   return (
     <>
-    {/* Page Content */}
-    <div className="content">
-      <div className="container-fluid">
+      {/* Page Content */}
+      <SideBar freelancer={false}>
         <div className="row">
-          {/* sidebar */}
-          <div className="col-xl-3 col-md-4 theiaStickySidebar">
-          <StickyBox offsetTop={20} offsetBottom={20}>
-                <Sidebar/>
-              </StickyBox>
-          </div>
-          {/* /sidebar */}
-          <div className="col-xl-9 col-md-8">
+          <div className="col-md-12">
             <nav className="user-tabs mb-4">
               <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
-              <li className="nav-item">
-                    <Link className="nav-link" to="/deposit-funds">
-                      Deposit Funds
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/withdraw-money">
-                      Withdraw Money
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link active" to="/transaction-history">
-                      Transaction History
-                    </Link>
-                  </li>
+                <li className="nav-item">
+                  <Link className="nav-link " to="/wallet">
+                    Wallet
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/transaction-history">
+                    Transaction History
+                  </Link>
+                </li>
               </ul>
             </nav>
+          </div>
+          <div className="col-md-12">
             <div className="transaction-table card">
               <div className="card-header">
                 <div className="row justify-content-between align-items-center">
@@ -225,11 +215,9 @@ const Transactionhistory = (props) => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    {/* /Page Content */}
-  </>
-      )
-  
-}
+      </SideBar>
+      {/* /Page Content */}
+    </>
+  );
+};
 export default Transactionhistory;

@@ -19,7 +19,7 @@ export const ProjectsData = [
     projectLevel: "Intermediate",
     qualification: "Bachelors",
     userId: 1,
-    status: "Pending",
+    status: "Cancelled",
     activity: [
       "Proposals: Less than 5 proposals",
       "Last viewed by client: 3 hours ago",
@@ -163,7 +163,7 @@ export const ProjectProposal = [
   {
     userId: 1,
     letter:
-      "Look forward to hearing from you, I am a good designer and developer. I can handle your daily bases task with no extra effort. Please contact me as I am jobless nowadays.",
+      "Look forward to hearing from you, I am a good designer and developer. I can handle your daily bases task with no extra effort. Please contact me as I am jobless nowadays. Look forward to hearing from you, I am a good designer and developer. I can handle your daily bases task with no extra effort. Please contact me as I am jobless nowadays.Look forward to hearing from you, I am a good designer and developer. I can handle your daily bases task with no extra effort. Please contact me as I am jobless nowadays.",
     price: 400,
     time: "10hrs",
   },
@@ -177,7 +177,7 @@ export const ProjectProposal = [
   {
     userId: 2,
     letter:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.",
+      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, whedummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.y. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.",
     price: 52,
     time: "3 Weeks",
   },

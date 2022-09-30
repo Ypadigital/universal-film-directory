@@ -107,7 +107,7 @@ const ProjectDetails = (props) => {
                     {/* /project proposal  */}
                   </div>
                   <div className="proposal-btns mt-3">
-                    <Link to="/view-proposals" className="pro-btn">
+                    <Link to={`/proposal/${project.id}`} className="pro-btn">
                       View all 18 Propsals
                     </Link>
                   </div>

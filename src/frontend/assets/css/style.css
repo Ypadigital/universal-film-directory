@@ -224,6 +224,38 @@ input[type=password] {
 	position: relative;
 
 }
+.h-screen{
+	height: 100%;
+	padding: 50px 0;
+}
+.about-content2 img{
+	width: 100%;
+	height: 200px;
+	object-fit: contain;
+	margin: 10px 0;
+}
+.rating{
+	display: inline-flex;
+}
+.connect-button{
+	border: 1px solid var(--main-color);
+	padding: 10px;
+	width: 100%;
+	background-color: white;
+	border-radius: 5px;
+	align-items: center;
+	display: flex;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+.connect-button img{
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+}
+.connect-button:hover, .connect-button:focus{
+	border: 1px solid var(--sub-color);
+}
 .chats_header  a i{
 	font-size: 20px;
 }
@@ -2481,7 +2513,7 @@ html.menu-opened body header:before {
 }
 .bg1 {
 	background: var(--main-color);
-	background-image: url("../images/bg/project-bg.png");
+	background-image: url("../images/bg/project-bg.gif");
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: 270px;
@@ -2499,7 +2531,7 @@ html.menu-opened body header:before {
 }
 .bg2 {
 	background: #FFF5F3;
-	background-image: url("../images/bg/work-bg.png");
+	background-image: url("../images/bg/work-bg.gif");
     background-repeat: no-repeat;
     background-position: right bottom;
 	background-size: 270px;
@@ -10221,8 +10253,9 @@ ul {
 }
 .author-img-wrap img {
 	border-radius: 20px;
-	height: 100px;
+	height: 150px;
 	object-fit: cover;
+	width: 100%;
 }
 .author-detail p {
 	margin-top: 15px;

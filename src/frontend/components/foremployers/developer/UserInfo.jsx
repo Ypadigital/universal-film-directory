@@ -46,16 +46,10 @@ function UserInfo({ freelancer }) {
                   </li>
                 </ul>
                 <div className="d-flex align-items-center justify-content-md-end justify-content-center">
-                  <i
-                    className={`fas fa-heart heart fa-2x me-2 ${
-                      freelancer.liked && "orange-text"
-                    }`}
-                  />
-
                   <a
                     className="btn bid-btn"
                     data-bs-toggle="modal"
-                    href="#hire"
+                    href="#bookmark"
                   >
                     Hire Now <i className="fas fa-long-arrow-alt-right" />
                   </a>

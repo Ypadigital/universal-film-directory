@@ -1,6 +1,6 @@
 export { default as Logo } from "../assets/images/logo.png";
 export { default as Logo_01 } from "../assets/images/logo-01.png";
-export { default as Banner_img } from "../assets/images/banner-img.png";
+export { default as Banner_img } from "../assets/images/banner-img.gif";
 export { default as Appstore } from "../assets/images/app-store.svg";
 export { default as Googleplay } from "../assets/images/google-play.svg";
 export { default as Subscribe } from "../assets/images/subscribe.png";
@@ -153,3 +153,7 @@ export { default as portfolio5 } from "../assets/images/Portfolio/5.png";
 export { default as portfolio6 } from "../assets/images/Portfolio/6.png";
 export { default as portfolio7 } from "../assets/images/Portfolio/7.png";
 export { default as portfolio8 } from "../assets/images/Portfolio/8.png";
+
+export { default as wallet1 } from "../assets/images/icon/meta.png";
+export { default as wallet2 } from "../assets/images/icon/wallet.png";
+export { default as confirm } from "../assets/images/icon/confirm.gif";

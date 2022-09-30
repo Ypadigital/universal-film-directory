@@ -24,11 +24,6 @@ import Milestone from "./components/foremployers/milestone";
 import Task from "./components/foremployers/task";
 import File from "./components/foremployers/file";
 import Payment from "./components/foremployers/payment";
-import Favourites from "./components/foremployers/favourites";
-import Invitations from "./components/foremployers/invitations";
-import Membership from "./components/foremployers/membership";
-import Review from "./components/foremployers/review";
-import DepositFunds from "./components/foremployers/depositfunds";
 import Withdrawmoney from "./components/foremployers/withdrawmoney";
 import Transactionhistory from "./components/foremployers/transactionhistory";
 import Settings from "./components/foremployers/settings";
@@ -51,34 +46,21 @@ import FreelancerMilestone from "./components/forfreelancer/milestone";
 import Freelancertask from "./components/forfreelancer/task";
 import FreelancerFile from "./components/forfreelancer/file";
 import FreelancerPayment from "./components/forfreelancer/payment";
-import FreelancerFavourites from "./components/forfreelancer/favourites";
-import FreelancerInvitations from "./components/forfreelancer/invitations";
-import FreelancerMembership from "./components/forfreelancer/membership";
 import FreelancerChangePassword from "./components/forfreelancer/changepassword";
-import FreelancerProfile from "./components/forfreelancer/profile";
 import FreelancerDeleteAccount from "./components/forfreelancer/deleteaccount";
 import FreelancerSettings from "./components/forfreelancer/settings";
 import Chats from "./components/forfreelancer/chats";
 import FreelancerReview from "./components/forfreelancer/review";
 import FreelancerPortfolio from "./components/forfreelancer/portfolio";
 import FreelancerWithdrawmoney from "./components/forfreelancer/withdrawmoney";
-import FreelancerTransactionhistory from "./components/forfreelancer/transactionhistory";
 import FreelancerVerifyIdentity from "./components/forfreelancer/verifyidentity";
 import Invoices from "./components/pages/invoices/invoices";
 import InvoiceView from "./components/pages/invoices/invoice_view";
 
 //Pages
 import Aboutus from "./components/pages/aboutus";
-import BlankPage from "./components/pages/blank_page";
 import Page404 from "./components/pages/page_404";
-import UserDetails from "./components/pages/user_details";
-import Login from "./components/login";
 import Register from "./components/register";
-import ForgotPassword from "./components/pages/forgot_password";
-//Blog
-import BlogList from "./components/blog/blog_list";
-import BlogGrid from "./components/blog/blog_grid";
-import BlogDetails from "./components/blog/blog_details";
 
 import PrivacyPolicy from "./components/privacyPages/privacy_policy";
 import TermsCondition from "./components/privacyPages/term_condition";
@@ -109,6 +91,10 @@ import "./assets/js/profile-settings.js";
 import "./assets/js/slick.js";
 import "./assets/js/script.js";
 import ScrollOnTop from "./ScrollOnTop";
+import OTPcode from "./components/pages/OTPcode";
+import PurchaseFilmCoin from "./components/pages/PurchaseFilmCoin";
+import VerifyIdentit from "./components/pages/VerifyIdentit";
+import FreelancerOnbord from "./components/pages/FreelancerOnbord";
 
 if (!window.location.pathname.includes("admin")) {
   require("./assets/js/bootstrap.min.js");
@@ -152,13 +138,8 @@ class AppUniversal extends Component {
             <Route exact path="/tasks" component={Task} />
             <Route exact path="/files" component={File} />
             <Route exact path="/project-payment" component={Payment} />
-            <Route exact path="/favourites" component={Favourites} />
-            <Route exact path="/invited-freelancer" component={Invitations} />
-            <Route exact path="/membership-plans" component={Membership} />
-            <Route exact path="/chats" component={Chats} />
-            <Route exact path="/review" component={Review} />
-            <Route exact path="/deposit-funds" component={DepositFunds} />
-            <Route exact path="/withdraw-money" component={Withdrawmoney} />
+
+            <Route exact path="/wallet" component={Withdrawmoney} />
             <Route
               exact
               path="/transaction-history"
@@ -186,7 +167,7 @@ class AppUniversal extends Component {
               path="/freelancer-project-proposals"
               component={FreelancerProjectproposal}
             />
-            <Route exact path="/view-proposals" component={ViewProposals} />
+            <Route exact path="/proposal/:id" component={ViewProposals} />
             <Route
               exact
               path="/freelancer-completed-projects"
@@ -219,21 +200,7 @@ class AppUniversal extends Component {
               component={FreelancerMilestone}
             />
             <Route exact path="/freelancer-task" component={Freelancertask} />
-            <Route
-              exact
-              path="/freelancer-favourites"
-              component={FreelancerFavourites}
-            />
-            <Route
-              exact
-              path="/freelancer-invitations"
-              component={FreelancerInvitations}
-            />
-            <Route
-              exact
-              path="/freelancer-membership"
-              component={FreelancerMembership}
-            />
+
             <Route
               exact
               path="/freelancer-change-password"
@@ -251,12 +218,6 @@ class AppUniversal extends Component {
             />
             <Route
               exact
-              path="/freelancer-profile"
-              component={FreelancerProfile}
-            />
-            <Route exact path="/freelancer-chats" component={Chats} />
-            <Route
-              exact
               path="/freelancer-review"
               component={FreelancerReview}
             />
@@ -270,11 +231,7 @@ class AppUniversal extends Component {
               path="/freelancer-withdraw-money"
               component={FreelancerWithdrawmoney}
             />
-            <Route
-              exact
-              path="/freelancer-transaction-history"
-              component={FreelancerTransactionhistory}
-            />
+
             <Route
               exact
               path="/freelancer-verify-identity"
@@ -282,18 +239,15 @@ class AppUniversal extends Component {
             />
             {/* Pages */}
             <Route exact path="/about" component={Aboutus} />
-            <Route exact path="/blank-page" component={BlankPage} />
             <Route exact path="/404-page" component={Page404} />
-            <Route exact path="/user-account-details" component={UserDetails} />
             <Route exact path="/freelancer-invoices" component={Invoices} />
             <Route exact path="/view-invoice" component={InvoiceView} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/forgot-password" component={ForgotPassword} />
-            {/* Blogs */}
-            <Route exact path="/blog-list" component={BlogList} />
-            <Route exact path="/blog-grid" component={BlogGrid} />
-            <Route exact path="/blog-details" component={BlogDetails} />
+            <Route exact path="/kcy" component={Register} />
+            <Route exact path="/otp-code" component={OTPcode} />
+            <Route exact path="/buytoken" component={PurchaseFilmCoin} />
+            <Route exact path="/verfiyidentit" component={VerifyIdentit} />
+            <Route exact path="/onbord" component={FreelancerOnbord} />
+            <Route exact path="/chats" component={Chats} />
             {/* Privacy Pages */}
             <Route exact path="/privacy-policy" component={PrivacyPolicy} />
             <Route exact path="/term-condition" component={TermsCondition} />

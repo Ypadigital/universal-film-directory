@@ -10,11 +10,6 @@ export const FreelancerSidebarData = [
     link: "freelancer-project-proposals",
   },
   {
-    name: "Favourites",
-    icon: "local_play",
-    link: "freelancer-favourites",
-  },
-  {
     name: "Reviwes",
     icon: "record_voice_over",
     link: "freelancer-review",
@@ -24,16 +19,7 @@ export const FreelancerSidebarData = [
     icon: "pie_chart",
     link: "freelancer-portfolio",
   },
-  {
-    name: "Membership",
-    icon: "person_add",
-    link: "freelancer-membership",
-  },
-  {
-    name: "Verify Identity",
-    icon: "person_pin",
-    link: "freelancer-verify-identity",
-  },
+
   {
     name: "Payments",
     icon: "wifi_tethering",
@@ -55,47 +41,27 @@ export const EmployerSidebarData = [
   {
     name: "Dashboard",
     icon: "verified_user",
-    link: "freelancer-dashboard",
+    link: "dashboard",
   },
   {
     name: "Jobs",
     icon: "business_center",
-    link: "freelancer-project-proposals",
-  },
-  {
-    name: "Favourites",
-    icon: "local_play",
-    link: "freelancer-favourites",
-  },
-  {
-    name: "Reviwes",
-    icon: "record_voice_over",
-    link: "freelancer-review",
-  },
-  {
-    name: "Portfolio",
-    icon: "pie_chart",
-    link: "freelancer-portfolio",
-  },
-  {
-    name: "Membership",
-    icon: "person_add",
-    link: "freelancer-membership",
+    link: "manage-projects",
   },
   {
     name: "Verify Identity",
     icon: "person_pin",
-    link: "freelancer-verify-identity",
+    link: "verify-identity",
   },
   {
     name: "Payments",
     icon: "wifi_tethering",
-    link: "freelancer-withdraw-money",
+    link: "wallet",
   },
   {
     name: "Settings",
     icon: "settings",
-    link: "freelancer-profile-settings",
+    link: "profile-settings",
   },
   {
     name: "Logout",

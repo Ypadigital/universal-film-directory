@@ -15,7 +15,7 @@ export const EmployData = [
     jobs: 40,
     instagram: "@hamisimwakabila",
     linkedin: "hamisi_mwakabila",
-    followers: "100",
+    followes: "100",
     following: "200",
   },
   {
@@ -27,7 +27,7 @@ export const EmployData = [
     jobs: 10,
     instagram: "@geogina_moris",
     linkedin: "geogina_moris",
-    followers: "50K",
+    followes: "50K",
     following: "2",
   },
   {
@@ -39,7 +39,7 @@ export const EmployData = [
     jobs: 700,
     instagram: "@john_doe",
     linkedin: "john_doe",
-    followers: "100M",
+    followes: "100M",
     following: "3M",
   },
   {
@@ -51,7 +51,7 @@ export const EmployData = [
     jobs: 83,
     instagram: "@milad_ayo",
     linkedin: "milad_ayo",
-    followers: "59K",
+    followes: "59K",
     following: "799",
   },
 ];

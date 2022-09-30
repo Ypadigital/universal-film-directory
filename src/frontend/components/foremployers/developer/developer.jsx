@@ -46,15 +46,6 @@ const Developer = (props) => {
                   >
                     <div className="freelance-widget">
                       <div className="freelance-content">
-                        <a
-                          data-bs-toggle="modal"
-                          href="#rating"
-                          className={`favourite ${
-                            freelancer.liked && "favourited"
-                          }`}
-                        >
-                          <i className="fas fa-star" />
-                        </a>
                         <div className="freelance-img">
                           <img src={freelancer.image} alt={freelancer.name} />
                           <span className="verified">

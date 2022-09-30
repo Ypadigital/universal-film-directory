@@ -43,17 +43,16 @@ const Home = () => {
                   <h5>Trused by over 2M+ users</h5>
                 </div>
                 <h1>
-                  Get the perfect{" "}
-                  <span className="orange-text">Photographers</span>
+                  Hire Top Film <br />
+                  <span className="orange-text">And movie services</span>
                 </h1>
-                <p>With the world's #1 Film Makers marketplace</p>
-                <form className="form" name="store" id="store" method="post">
+                <p>With the world's #1 Films service marketplace.</p>
+                <form className="form" name="store" id="store">
                   <div className="form-inner">
                     <div className="input-group">
                       <span className="drop-detail">
                         <select className="form-control select" name="storeID">
-                          <option value="/project">Jobs</option>
-                          <option value="/developer">Freelancers</option>
+                          <option value="/freelancer">Freelancers</option>
                         </select>
                       </span>
                       <input
@@ -61,7 +60,7 @@ const Home = () => {
                         className="form-control"
                         placeholder="Search here"
                       />
-                      <button className="btn btn-primary sub-btn" type="submit">
+                      <button className="btn btn-primary sub-btn" type="button">
                         Search Now
                       </button>
                     </div>
@@ -116,7 +115,7 @@ const Home = () => {
                 </div>
                 <div className="feature-content">
                   <h3>388,615</h3>
-                  <p>Verified Jobs</p>
+                  <p>Verified Actors</p>
                 </div>
               </div>
             </div>
@@ -145,9 +144,7 @@ const Home = () => {
             {/* /Feature Item */}
             <div className="col-md-6 work-box bg2">
               <div className="work-content">
-                <h2>
-                  I want to <span>work</span>
-                </h2>
+                <h2>I have service to offer</h2>
                 <p>
                   Do you want to earn money, find unlimited clients and build
                   your freelance career?

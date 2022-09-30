@@ -28,12 +28,6 @@ const Invoices = () => {
                 Invoices
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/freelancer-transaction-history">
-                {" "}
-                Transaction History
-              </Link>
-            </li>
           </ul>
         </nav>
         <div className="transaction-table card">
