@@ -71,8 +71,11 @@ const Header = (props) => {
               <li className={pathname === "freelancer" ? "active" : ""}>
                 <Link to="/freelancer">Freelancers</Link>
               </li>
+              <li className={pathname === "/" ? "active" : ""}>
+                <Link to="/">VIP's</Link>
+              </li>
               <li className={pathname === "project" ? "active" : ""}>
-                <Link to="/project">VIP's</Link>
+                <Link to="/project">Projects</Link>
               </li>
             </ul>
           </div>
