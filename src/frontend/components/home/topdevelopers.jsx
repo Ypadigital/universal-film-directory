@@ -7,6 +7,7 @@ import $ from "jquery";
 import { FreelancerData, FrelancerSkills } from "../Data/UserDatas";
 import Rating from "../Common/Ratings";
 import FavoriteModal from "../Common/Modals/FavoriteModal";
+import { EmployData } from "../Data/EmployData";
 
 const TopDevelopers = (props) => {
   var settings = {
@@ -50,7 +51,7 @@ const TopDevelopers = (props) => {
             <div className="col-md-7 col-sm-12 col-12 mx-auto">
               <div className="section-header text-center">
                 <div className="section-line" />
-                <h2 className="header-title">Most Hired Freelancers</h2>
+                <h2 className="header-title">VIP's Celebrity</h2>
                 <p>Work with talented people at the most affordable price</p>
               </div>
             </div>
@@ -59,16 +60,9 @@ const TopDevelopers = (props) => {
             <div className="col-md-12">
               {/* <div className="developer-slider slider"> */}
               <Slider {...settings} className="developer-slider">
-                {FreelancerData.map((item, index) => (
-                  <div className="freelance-widget">
+                {EmployData.map((item, index) => (
+                  <div key={index} className="freelance-widget">
                     <div className="freelance-content">
-                      <a
-                        data-bs-toggle="modal"
-                        href="#rating"
-                        className={`favourite ${item.liked && "favourited"}`}
-                      >
-                        <i className="fas fa-star" />
-                      </a>
                       <div className="freelance-img">
                         <img src={item.image} alt="UserImage" />
                         <span className="verified">
@@ -78,39 +72,17 @@ const TopDevelopers = (props) => {
                       <div className="freelance-info">
                         <h3>{item.name}</h3>
                         <div className="freelance-specific">
-                          {item.category}
+                          From : <span className="bg-pink">{item.from}</span>
                         </div>
                         <div className="freelance-location">
                           <i className="fas fa-map-marker-alt me-1" />
                           {item.location}
                         </div>
-                        <div className="rating">
-                          <Rating value={item.totalRates} />
-                          <span className="average-rating">
-                            {item.totalRates} (32)
-                          </span>
-                        </div>
-                        <div className="freelance-tags">
-                          {FrelancerSkills.slice(0, 3).map((skill, index) => (
-                            <span
-                              key={index}
-                              className="badge badge-pill badge-design"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="freelancers-price">
-                          ${item.price} {item.per}
-                        </div>
+                        <div className="freelancers-price">{item.category}</div>
                       </div>
                     </div>
                     <div className="cart-hover">
-                      <Link
-                        to={`/freelancer/${item.id}`}
-                        className="btn-cart"
-                        tabIndex={-1}
-                      >
+                      <Link to={"#"} className="btn-cart" tabIndex={-1}>
                         View Profile
                       </Link>
                     </div>

@@ -1,28 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { TopDevelopers } from "./topdevelopers";
-import { Reviews } from "./review";
 // Import Images
-import {
-  Banner_img,
-  Icon_01,
-  Icon_02,
-  Icon_03,
-  Avatar_1,
-  Avatar_2,
-  Avatar_3,
-  Project_01,
-  Project_02,
-  Project_03,
-  Project_04,
-  Img_02,
-  Img_03,
-  Img_04,
-  Subscribe,
-  Blog_01,
-  Blog_02,
-  Blog_03,
-} from "../imagepath";
+import { Banner_img, Icon_01, Icon_02, Icon_03, Subscribe } from "../imagepath";
 import { CategoriesData } from "../Data/Categories";
 
 const Home = () => {
@@ -167,7 +147,7 @@ const Home = () => {
                 <div className="section-line" />
                 <h2 className="header-title">
                   Get Inspired
-                  <br /> By Filmed Projects
+                  <br /> By Film Projects
                 </h2>
                 <p>High Performing Solutions To Your</p>
               </div>

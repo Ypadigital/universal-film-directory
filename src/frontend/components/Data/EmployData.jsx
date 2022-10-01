@@ -17,6 +17,8 @@ export const EmployData = [
     linkedin: "hamisi_mwakabila",
     followes: "100",
     following: "200",
+    category: "Artist",
+    from: "Bollywood",
   },
   {
     id: 2,
@@ -29,6 +31,8 @@ export const EmployData = [
     linkedin: "geogina_moris",
     followes: "50K",
     following: "2",
+    category: "Singer",
+    from: "Blakpink",
   },
   {
     id: 3,
@@ -41,6 +45,8 @@ export const EmployData = [
     linkedin: "john_doe",
     followes: "100M",
     following: "3M",
+    category: "Actor",
+    from: "Hollywood",
   },
   {
     id: 4,
@@ -53,5 +59,7 @@ export const EmployData = [
     linkedin: "milad_ayo",
     followes: "59K",
     following: "799",
+    category: "Dancer",
+    from: "Disney",
   },
 ];
