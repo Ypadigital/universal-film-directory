@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import $ from "jquery";
-import {
-  Logo,
-  Img_04,
-  Flags_us,
-  Flags_fr,
-  Flags_es,
-  Flags_de,
-  company_img3,
-  company_img4,
-  company_img1,
-} from "../imagepath";
+import { Logo, company_img1 } from "../imagepath";
 import ConnectWallet from "../Common/Modals/ConnectWallet";
 
 const Header = (props) => {
