@@ -14,14 +14,6 @@ const Home = () => {
           <div className="row align-items-center">
             <div className="col-md-8 col-lg-7">
               <div className="banner-content">
-                <div className="rating d-flex">
-                  <i className="fas fa-star checked" />
-                  <i className="fas fa-star checked" />
-                  <i className="fas fa-star checked" />
-                  <i className="fas fa-star checked" />
-                  <i className="fas fa-star checked" />
-                  <h5>Trused by over 2M+ users</h5>
-                </div>
                 <h1>
                   Hire Top Film <br />
                   <span className="orange-text">And movie services</span>
@@ -63,7 +55,7 @@ const Home = () => {
           <div className="row">
             {/* Feature Item */}
             <div className="col-md-4">
-              <div className="feature-item freelance-count">
+              <div className="feature-item">
                 <div className="feature-icon">
                   <img src={Icon_01} className="img-fluid" alt="" />
                 </div>
@@ -89,7 +81,7 @@ const Home = () => {
             {/* /Feature Item */}
             {/* Feature Item */}
             <div className="col-md-4">
-              <div className="feature-item comp-project">
+              <div className="feature-item">
                 <div className="feature-icon">
                   <img src={Icon_03} className="img-fluid" alt="" />
                 </div>
@@ -185,15 +177,6 @@ const Home = () => {
             ))}
 
             {/*- /Project Item  */}
-          </div>
-          <div className="row">
-            <div className="col-md-12 text-center">
-              <div className="see-all">
-                <Link to="/project" className="btn all-btn">
-                  SEE ALL PROJECT
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>

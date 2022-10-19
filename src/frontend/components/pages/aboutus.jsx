@@ -4,14 +4,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import Breadcrub from "../Common/Breadcrub";
 // Import Images
-import {
-  About_img,
-  About_01,
-  Review_01,
-  Review_1,
-  Review_02,
-  Review_03,
-} from "../imagepath";
+import { About_img } from "../imagepath";
 
 const Aboutus = () => {
   var settings = {
@@ -137,9 +130,6 @@ const Aboutus = () => {
               <div className="btn-item">
                 <Link className="btn get-btn" to="/login">
                   Get Started
-                </Link>
-                <Link className="btn courses-btn" to="/freelancer">
-                  Freelancers
                 </Link>
               </div>
             </div>
