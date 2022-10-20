@@ -64,9 +64,9 @@ const Header = (props) => {
               <li className={pathname === "/vip" ? "active" : ""}>
                 <Link to="/vip">VIP's</Link>
               </li>
-              <li className={pathname === "project" ? "active" : ""}>
+              {/* <li className={pathname === "project" ? "active" : ""}>
                 <Link to="/project">Projects</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <ul className="nav header-navbar-rht">

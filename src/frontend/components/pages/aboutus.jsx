@@ -64,8 +64,8 @@ const Aboutus = () => {
                   doloremque tenetur incidunt officiis explicabo optio
                   perferendis.
                 </p>
-                <Link to="/project" className="btn learn-btn">
-                  Browser Jobs
+                <Link to="/freelancer" className="btn learn-btn">
+                  Browser Now
                 </Link>
               </div>
             </div>
@@ -128,7 +128,7 @@ const Aboutus = () => {
                 remote resources.
               </p>
               <div className="btn-item">
-                <Link className="btn get-btn" to="/login">
+                <Link className="btn get-btn" to="/kcy">
                   Get Started
                 </Link>
               </div>
