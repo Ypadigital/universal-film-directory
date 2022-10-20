@@ -1818,6 +1818,11 @@ label {
     display: inline-block;
     margin-right: 0;
 }
+.logo img {
+		width: 100%;
+		height:30px;
+		object-fit: contain;
+}
 .togglesearch {
 	position: absolute;
 	top: 55px;
@@ -2276,6 +2281,35 @@ html.menu-opened body header:before {
 	height: 100%;
 	background-color: rgba(0,0,0,0.6);
 	z-index: 99;
+}
+/* vip */
+.vip-banner{
+	position: relative;
+	padding: 120px 0;
+	background-image: url('../images/vip.png');
+    background-repeat: no-repeat;
+    background-position: center;
+		background-size: cover;
+		height: 100vh;
+
+}
+.vip-content h1{
+	font-weight: bold;
+	font-size: 90px;
+	color: white;
+	margin-bottom: 20px;
+}
+.vip-content p {
+	font-size: 25px;
+	color: #e9e9e9;
+}
+.vip-content .btn{
+	background: var(--linear-buttons);
+	color: white;
+	font-size: 20px;
+	padding: 10px 30px;
+	border-radius: 30px;
+	border: 0;
 }
 
 /*-----------------
@@ -12210,6 +12244,7 @@ body.chat-page {
 		text-align: center;
 		margin-right: 0;
 	}
+
 	#mobile_btn {
 		margin-right: 0;
 	}
