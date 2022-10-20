@@ -2287,6 +2287,7 @@ html.menu-opened body header:before {
 .vip-banner{
 	position: relative;
 	padding: 120px 0;
+	background:var(--linear-color);
 	background-image: url('../images/vip.png');
     background-repeat: no-repeat;
     background-position: center;
