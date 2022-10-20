@@ -1717,6 +1717,7 @@ label {
 }
 .header {
 	width: 100%;
+	background: var(--linear-color);
 	position: fixed;
 	z-index: 1040;
 	-webkit-transition: all 0.3s ease 0s;
