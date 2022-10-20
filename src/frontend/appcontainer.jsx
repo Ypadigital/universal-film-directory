@@ -95,6 +95,9 @@ import OTPcode from "./components/pages/OTPcode";
 import PurchaseFilmCoin from "./components/pages/PurchaseFilmCoin";
 import VerifyIdentit from "./components/pages/VerifyIdentit";
 import FreelancerOnbord from "./components/pages/FreelancerOnbord";
+import VIP from "./components/pages/VIP/Index";
+import RequestAccess from "./components/pages/VIP/RequestAccess";
+import VipList from "./components/pages/VIP/VipList";
 
 if (!window.location.pathname.includes("admin")) {
   require("./assets/js/bootstrap.min.js");
@@ -111,6 +114,10 @@ class AppUniversal extends Component {
             {/* home */}
             <Route exact path="/" component={Home} />
             <Route exact path="/post-project" component={PostProject} />
+            {/* vips */}
+            <Route exact path="/vip" component={VIP} />
+            <Route exact path="/request-access" component={RequestAccess} />
+            <Route exact path="/vip-list" component={VipList} />
             {/* For Employer */}
             <Route exact path="/freelancer" component={Developer} />
             <Route exact path="/freelancer/:id" component={DeveloperDetails} />
