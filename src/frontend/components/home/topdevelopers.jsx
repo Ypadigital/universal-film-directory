@@ -82,7 +82,11 @@ const TopDevelopers = (props) => {
                       </div>
                     </div>
                     <div className="cart-hover">
-                      <Link to={"#"} className="btn-cart" tabIndex={-1}>
+                      <Link
+                        to="/freelancer/1"
+                        className="btn-cart"
+                        tabIndex={-1}
+                      >
                         View Profile
                       </Link>
                     </div>
