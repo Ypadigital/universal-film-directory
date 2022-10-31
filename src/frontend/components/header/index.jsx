@@ -62,7 +62,7 @@ const Header = (props) => {
                 <Link to="/freelancer">Freelancers</Link>
               </li>
               <li className={pathname === "/vip" ? "active" : ""}>
-                <Link to="/vip">VIP's</Link>
+                <Link to="/vip">StarSpace</Link>
               </li>
               {/* <li className={pathname === "project" ? "active" : ""}>
                 <Link to="/project">Projects</Link>
@@ -97,6 +97,9 @@ const Header = (props) => {
                 <Link className="dropdown-item" to="/freelancer-dashboard">
                   <i className="fa fa-cog" />
                   Freelancer Dashboard
+                </Link>
+                <Link className="dropdown-item" to="/vip-dashboard">
+                  <i className="material-icons">verified_user</i> Vip Dashboard
                 </Link>
                 <Link className="dropdown-item" to="/dashboard">
                   <i className="fa fa-th-large" /> Employe Dashboard

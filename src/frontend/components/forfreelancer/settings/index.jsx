@@ -132,53 +132,6 @@ const FreelancerSettings = (props) => {
                   </div>
                 </div>
               </div>
-              {/* price */}
-              <div className="card">
-                <div className="pro-head">
-                  <h3 className="pro-title without-border mb-0">Rate</h3>
-                </div>
-                <div className="payment-process card-body">
-                  <ul>
-                    <li className="pt-0">
-                      <label className="total"> Currency</label>
-                      <div className="sort-by sort-show">
-                        <span className="sortby-fliter">
-                          <select className="select">
-                            <option className="sorting">Dollar</option>
-                            <option className="sorting">Euro</option>
-                            <option className="sorting">Yen</option>
-                          </select>
-                        </span>
-                      </div>
-                    </li>
-                    <li>
-                      <label className="total">hourly rate</label>
-                      <div className="input-group dep-amt mb-3">
-                        <div className="input-group-prepend">
-                          <span className="input-group-text" id="basic-addon1">
-                            $
-                          </span>
-                        </div>
-                        <input
-                          type="text"
-                          className="form-control"
-                          defaultValue={2100}
-                          aria-label="Username"
-                          aria-describedby="basic-addon1"
-                        />
-                      </div>
-                    </li>
-                    <li className="tot-border">
-                      <label className="total">platform service fee</label>
-                      <label className="price">$63.30</label>
-                    </li>
-                    <li>
-                      <label className="total">Total</label>
-                      <label className="price">$2,163.30</label>
-                    </li>
-                  </ul>
-                </div>
-              </div>
 
               <div className="form-row">
                 <div className="col-md-12 col-xl-6">

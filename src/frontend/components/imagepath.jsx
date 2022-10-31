@@ -1,5 +1,6 @@
 export { default as Logo } from "../assets/images/logo.png";
 export { default as Logo_01 } from "../assets/images/logo-01.png";
+export { default as Logo_Black } from "../assets/images/logoblack.png";
 export { default as Banner_img } from "../assets/images/banner-img.gif";
 export { default as Appstore } from "../assets/images/app-store.svg";
 export { default as Googleplay } from "../assets/images/google-play.svg";
@@ -157,3 +158,9 @@ export { default as portfolio8 } from "../assets/images/Portfolio/8.png";
 export { default as wallet1 } from "../assets/images/icon/meta.png";
 export { default as wallet2 } from "../assets/images/icon/wallet.png";
 export { default as confirm } from "../assets/images/icon/confirm.gif";
+
+export { default as vip_img1 } from "../assets/images/vips/1.png";
+export { default as vip_img2 } from "../assets/images/vips/2.png";
+export { default as vip_img3 } from "../assets/images/vips/3.png";
+export { default as vip_img4 } from "../assets/images/vips/4.png";
+export { default as vip_img5 } from "../assets/images/vips/5.png";

@@ -49,7 +49,7 @@ const Aboutus = () => {
             <div className="col-lg-6 d-flex align-items-center">
               <div className="about-content">
                 <h2>
-                  About <span className="orange-text">Kofejob</span>
+                  About <span className="orange-text">AXYZ Movie Services</span>
                 </h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
@@ -85,33 +85,68 @@ const Aboutus = () => {
             <div className="col-md-3">
               <div className="counter">
                 <h2>800+</h2>
-                <h4>Jobs Posted</h4>
+                <h4>Celebrities</h4>
               </div>
             </div>
             <div className="col-md-3">
               <div className="counter">
                 <h2>80+</h2>
-                <h4>Companies</h4>
+                <h4>Movie Studios</h4>
               </div>
             </div>
             <div className="col-md-3">
               <div className="counter">
                 <h2>900+</h2>
-                <h4> Developers</h4>
+                <h4> Providers</h4>
               </div>
             </div>
             <div className="col-md-3">
               <div className="counter">
                 <h2>90+</h2>
-                <h4>Development Services</h4>
+                <h4>Agencies</h4>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* about 2 */}
+      <section className="section about">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-6 d-flex align-items-center">
+              <div className="about-content">
+                <h2>
+                  About <span className="orange-text">StarSpace 360</span>
+                </h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
+                  modi, saepe hic esse maxime quasi, sapiente ex debitis quis
+                  dolorum unde, neque quibusdam eveniet nobis enim porro
+                  repudiandae nesciunt quidem.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Magni delectus soluta adipisci beatae ullam quisquam, quia
+                  recusandae rem assumenda, praesentium porro sequi eaque
+                  doloremque tenetur incidunt officiis explicabo optio
+                  perferendis.
+                </p>
+                <Link to="/freelancer" className="btn learn-btn">
+                  Browser Now
+                </Link>
+              </div>
+            </div>
+            <div className="offset-lg-1 col-lg-5">
+              <div className="about-img">
+                <img className="img-fluid" src={About_img} alt="AboutImage" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Experts */}
-      <section className="section expert">
+      {/* <section className="section expert">
         <div className="container">
           <div className="row">
             <div className="col-md-8 mx-auto">
@@ -135,7 +170,7 @@ const Aboutus = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* /Experts */}
     </>
   );

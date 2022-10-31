@@ -69,3 +69,31 @@ export const EmployerSidebarData = [
     link: "#",
   },
 ];
+
+export const VIPSidebarData = [
+  {
+    name: "Dashboard",
+    icon: "verified_user",
+    link: "vip-dashboard",
+  },
+  {
+    name: "Proposals",
+    icon: "business_center",
+    link: "vip-proposals",
+  },
+  {
+    name: "Payments",
+    icon: "wifi_tethering",
+    link: "vip-payment",
+  },
+  {
+    name: "Settings",
+    icon: "settings",
+    link: "vip-settings",
+  },
+  {
+    name: "Logout",
+    icon: "power_settings_new",
+    link: "#",
+  },
+];
