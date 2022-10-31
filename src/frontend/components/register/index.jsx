@@ -33,10 +33,7 @@ const Register = (props) => {
                 <div className="align-items-center justify-content-center">
                   <div className="login-right">
                     <div className="login-header text-center">
-                      <Link to="/index">
-                        <img src={Logo_01} alt="logo" className="img-fluid" />
-                      </Link>
-                      <h3>Join Kofejob</h3>
+                      <h3>Join StarSpace 360</h3>
                       <p>Make the most of your professional life</p>
                     </div>
                     <nav className="user-tabs mb-4">
