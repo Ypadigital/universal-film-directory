@@ -99,7 +99,8 @@ const Header = (props) => {
                   Freelancer Dashboard
                 </Link>
                 <Link className="dropdown-item" to="/vip-dashboard">
-                  <i className="material-icons">verified_user</i> Vip Dashboard
+                  <i className="material-icons">verified_user</i> StarSpace 360
+                  Dashboard
                 </Link>
                 <Link className="dropdown-item" to="/dashboard">
                   <i className="fa fa-th-large" /> Employe Dashboard
