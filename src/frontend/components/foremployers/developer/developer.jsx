@@ -2,20 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Import Images
-import {
-  Avatar_1,
-  Avatar_2,
-  Avatar_3,
-  Avatar_4,
-  Avatar_5,
-  Avatar_6,
-  Avatar_7,
-  Avatar_8,
-  Avatar_9,
-  Avatar_10,
-  Avatar_11,
-  Avatar_12,
-} from "../../imagepath";
 import Breadcrub from "../../Common/Breadcrub";
 import Filter from "../../Common/Filter";
 import SortsTags from "../../Common/Sorts&Tags";

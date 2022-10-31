@@ -10,30 +10,24 @@ function Works() {
         <div className="row">
           {FrelancerPortfolio.map((portfolio, i) => (
             <div key={i} className="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-              <div className="project-widget">
+              <Link to="/portfolio-overview" className="project-widget">
                 <div className="pro-image">
-                  <a href={portfolio.image} data-fancybox="gallery2">
-                    <img
-                      className="img-fluid"
-                      alt={portfolio.name}
-                      src={portfolio.image}
-                    />
-                  </a>
+                  <img
+                    className="img-fluid"
+                    alt={portfolio.name}
+                    src={portfolio.image}
+                  />
                 </div>
                 <div className="pro-detail">
-                  <h3 className="pro-name">
-                    <a target="_blank" href="/www.google.com">
-                      {portfolio.name}
-                    </a>
-                  </h3>
+                  <h3 className="pro-name">{portfolio.name}</h3>
                   <p className="pro-designation">{portfolio.category}</p>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
 
           <div className="col-md-12 text-center">
-            <Link to="/project" className="btn more-btn">
+            <Link to="#" className="btn more-btn">
               View more{" "}
             </Link>
           </div>

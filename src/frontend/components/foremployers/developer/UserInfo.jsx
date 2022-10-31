@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Rating from "../../Common/Ratings";
 import { Flags_pl } from "../../imagepath";
 
@@ -37,22 +38,10 @@ function UserInfo({ freelancer }) {
                 </div>
               </div>
               <div className="pro-info-right profile-inf r-0">
-                <ul className="profile-right">
-                  <li>
-                    <div>
-                      <h3 className="amt-hr">${freelancer.price}</h3>{" "}
-                      <p>( Per {freelancer.per} )</p>
-                    </div>
-                  </li>
-                </ul>
                 <div className="d-flex align-items-center justify-content-md-end justify-content-center">
-                  <a
-                    className="btn bid-btn"
-                    data-bs-toggle="modal"
-                    href="#bookmark"
-                  >
-                    Hire Now <i className="fas fa-long-arrow-alt-right" />
-                  </a>
+                  <Link to="/chat" className="btn bid-btn">
+                    Chat Now <i className="material-icons">chat</i>
+                  </Link>
                 </div>
               </div>
             </div>

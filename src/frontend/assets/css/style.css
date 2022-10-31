@@ -10558,8 +10558,8 @@ h2.footer-title:after {
 }
 .btn-success {
     color: #fff;
-    background-color: var(--sub-color);
-    border-color: var(--sub-color);
+    /* background-color: var(--sub-color);
+    border-color: var(--sub-color); */
 }
 .btn-success:hover {
     background-color: var(--main-color);

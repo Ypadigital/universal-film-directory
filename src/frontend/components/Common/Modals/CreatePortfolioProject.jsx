@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ReactSummernote from "react-summernote";
 
 function CreatePortfolioProject() {
   return (
@@ -15,9 +16,6 @@ function CreatePortfolioProject() {
             </span>
           </div>
           <div className="modal-body">
-            <div className="port-title">
-              <h3>Simple &amp; Best Way To Showcase Your Work</h3>
-            </div>
             <form>
               <div className="modal-info">
                 <div className="row">
@@ -27,8 +25,48 @@ function CreatePortfolioProject() {
                       <input
                         type="text"
                         className="form-control"
-                        defaultValue="Portfolio Name"
+                        defaultValue="I will work on your video as editor, filmer or director...."
                       />
+                    </div>
+                    <div className="form-group">
+                      <label>Decription</label>
+                      <ReactSummernote
+                        value="Default value"
+                        options={{
+                          lang: "ru-RU",
+                          height: 350,
+                          dialogsInBody: true,
+                          toolbar: [
+                            ["style", ["style"]],
+                            ["font", ["bold", "underline", "clear"]],
+                            ["fontname", ["fontname"]],
+                            ["para", ["ul", "ol", "paragraph"]],
+                            ["table", ["table"]],
+                            ["insert", ["link", "picture", "video"]],
+                            ["view", ["fullscreen", "codeview"]],
+                          ],
+                        }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Price</label>
+                      <div className="row">
+                        <div className="col-md-8">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="$500"
+                          />
+                        </div>
+                        <div className="col-md-4">
+                          <select className="form-control select">
+                            <option selected>Per Hour</option>
+                            <option value="1">Per Day</option>
+                            <option value="2">Per Week</option>
+                            <option value="3">Per Month</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                     <div className="form-group">
                       <label>Link</label>
@@ -45,12 +83,6 @@ function CreatePortfolioProject() {
                 </div>
               </div>
               <div className="submit-section text-right">
-                <a
-                  data-bs-dismiss="modal"
-                  className="btn btn-primary black-btn submit-btn"
-                >
-                  Cancel
-                </a>
                 <Link
                   to="/freelancer-portfolio"
                   className="btn btn-primary submit-btn"

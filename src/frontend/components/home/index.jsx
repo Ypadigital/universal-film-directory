@@ -24,7 +24,9 @@ const Home = () => {
                     <div className="input-group">
                       <span className="drop-detail">
                         <select className="form-control select" name="storeID">
-                          <option value="/freelancer">Freelancers</option>
+                          <option value="/">Hollywood</option>
+                          <option value="/">Bollywood</option>
+                          <option value="/">Tollywood</option>
                         </select>
                       </span>
                       <input
@@ -151,7 +153,7 @@ const Home = () => {
               <div key={i} className="col-lg-3 col-md-6 col-sm-6">
                 <div className="project-item">
                   <div className="project-img">
-                    <Link to="/project">
+                    <Link to="/">
                       <img
                         src={val.image}
                         alt={val.titte}

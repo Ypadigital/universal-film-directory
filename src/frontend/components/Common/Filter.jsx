@@ -46,48 +46,49 @@ function Filter({ project }) {
               />
             </div>
           </div>
+          {project ? (
+            <div className="filter-widget">
+              <h4>Region</h4>
+              <div className="form-group">
+                <select className="form-control select">
+                  <option>Select Region</option>
+                  <option value="/">Hollywood</option>
+                  <option value="/">Bollywood</option>
+                  <option value="/">Tollywood</option>
+                  <option value="/">Nollywood</option>
+                  <option value="/">Chinawood</option>
+                </select>
+              </div>
+            </div>
+          ) : (
+            <div className="filter-widget">
+              <h4>Category</h4>
+              <div className="form-group">
+                <select className="form-control select">
+                  <option>Select Category</option>
+                  <option value="/">Photography</option>
+                  <option value="/">Dancer</option>
+                  <option value="/">Director</option>
+                  <option value="/">Makeup Artst</option>
+                  <option value="/">Song Writer</option>
+                </select>
+              </div>
+            </div>
+          )}
+
           <div className="filter-widget">
             <h4>Location</h4>
             <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Location"
-              />
-            </div>
-          </div>
-          <div className="filter-widget">
-            <h4>Category</h4>
-            <div className="form-group">
               <select className="form-control select">
-                <option>Select Category</option>
-                <option>Developer</option>
-                <option>UI Developer</option>
-                <option>React Developer</option>
-                <option>.Net Developer</option>
+                <option>USA</option>
+                <option>India</option>
+                <option>China</option>
+                <option>Japan</option>
+                <option>Africa</option>
               </select>
             </div>
           </div>
-          <div className="filter-widget">
-            <h4>Completed Projects</h4>
-            <div className="form-group">
-              <select className="form-control select">
-                <option>Select Projects</option>
-                <option>Node Projects</option>
-                <option>UI Projects</option>
-              </select>
-            </div>
-          </div>
-          <div className="filter-widget">
-            <h4>Pricing Type</h4>
-            <div className="form-group">
-              <select className="form-control select">
-                <option>Hourly Rate</option>
-                <option>Full Day Rate</option>
-                <option>Half Day Rate</option>
-              </select>
-            </div>
-          </div>
+
           <div className="filter-widget">
             <h4>Add Skills</h4>
             <div className="form-group">
@@ -99,27 +100,7 @@ function Filter({ project }) {
               <input type="text" className="form-control" />
             </div>
           </div>
-          <div className="filter-widget">
-            <h4>Avalability</h4>
-            <div>
-              <label className="custom_check">
-                <input type="checkbox" name="select_time" defaultChecked />
-                <span className="checkmark" /> Hourly
-              </label>
-            </div>
-            <div>
-              <label className="custom_check">
-                <input type="checkbox" name="select_time" />
-                <span className="checkmark" /> Part Time
-              </label>
-            </div>
-            <div>
-              <label className="custom_check">
-                <input type="checkbox" name="select_time" />
-                <span className="checkmark" /> Full Time
-              </label>
-            </div>
-          </div>
+
           <div className="filter-widget">
             <h4>Experience</h4>
             <div>
@@ -159,47 +140,23 @@ function Filter({ project }) {
               </label>
             </div>
           </div>
-          <div className="filter-widget">
-            <h4>Hourly Rate</h4>
-            <Nouislider range={{ min: 0, max: 100 }} start={[20, 80]} connect />
-          </div>
-          <div className="filter-widget">
-            <h4>Currency</h4>
-            <div className="form-group">
-              <select className="form-control select">
-                <option>USD</option>
-                <option>Euro</option>
-              </select>
-            </div>
-          </div>
+
           {!project && (
-            <>
-              <div className="filter-widget">
-                <h4>Profile type</h4>
-                <div className="form-group">
-                  <select className="form-control select">
-                    <option>Individual</option>
-                    <option>Individual</option>
-                    <option>Individual</option>
-                  </select>
+            <div className="filter-widget">
+              <h4>Reviews</h4>
+              {Rates.map((rate, index) => (
+                <div key={index}>
+                  <label className="custom_check">
+                    <input type="checkbox" name="pro_ratings" />
+                    <span className="checkmark" />
+                    <span className="rating">
+                      <Rating value={rate.rate} />
+                      <span className="average-rating">({rate.number})</span>
+                    </span>
+                  </label>
                 </div>
-              </div>
-              <div className="filter-widget">
-                <h4>Reviews</h4>
-                {Rates.map((rate, index) => (
-                  <div key={index}>
-                    <label className="custom_check">
-                      <input type="checkbox" name="pro_ratings" />
-                      <span className="checkmark" />
-                      <span className="rating">
-                        <Rating value={rate.rate} />
-                        <span className="average-rating">({rate.number})</span>
-                      </span>
-                    </label>
-                  </div>
-                ))}
-              </div>
-            </>
+              ))}
+            </div>
           )}
 
           <div className="btn-search">

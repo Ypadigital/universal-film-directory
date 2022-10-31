@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactSummernote from "react-summernote";
-import Breadcrub from "../Common/Breadcrub";
-import ConfirmModal from "../Common/Modals/ConfirmModal";
-import TableEdSkill from "../Common/TableEdSkill";
-import { Developer_01 } from "../imagepath";
+import VipSideBar from "../../../Common/VipSideBar";
+import { Developer_01 } from "../../../imagepath";
 
-function FreelancerOnbord() {
+const VipSettings = (props) => {
+  useEffect(() => {
+    document.body.className = "dashboard-page";
+    return () => {
+      document.body.className = "";
+    };
+  });
+
   return (
     <>
-      <Breadcrub title="Onbording" />
-      <div className="content">
-        <div className="container">
+      {/* Page Content */}
+      <VipSideBar>
+        <div className="pro-pos">
           <div className="setting-content">
             <form>
               <div className="card">
@@ -22,10 +27,17 @@ function FreelancerOnbord() {
                 <div className="pro-body">
                   <div className="row">
                     <div className="form-group col-md-6">
-                      <label>Display Name</label>
+                      <label>Username</label>
                       <input type="text" className="form-control" />
                     </div>
-
+                    <div className="form-group col-md-6">
+                      <label>Email Address</label>
+                      <input type="email" className="form-control" />
+                    </div>
+                    <div className="form-group col-md-6">
+                      <label>Contact Number</label>
+                      <input type="email" className="form-control" />
+                    </div>
                     <div className="form-group col-md-6">
                       <label>Tell the world what you do</label>
                       <input type="text" className="form-control" />
@@ -252,9 +264,7 @@ function FreelancerOnbord() {
                   </div>
                 </div>
               </div>
-              {/* education */}
-              <TableEdSkill title="Education" main={true} />
-              <TableEdSkill title="Experiance" main={false} />
+
               {/* Shot desc */}
               <div className="card">
                 <div className="pro-head">
@@ -322,20 +332,26 @@ function FreelancerOnbord() {
                   </div>
                 </div>
               </div>
-              <a
-                href="#confirm"
-                data-bs-toggle="modal"
-                className="btn w-100 my-5 py-3 btn-primary click-btn btn-plan"
-              >
-                Submit
-              </a>
+              <div className="card text-end">
+                <div className="pro-body">
+                  <button className="btn btn-secondary click-btn btn-plan">
+                    Cancel
+                  </button>
+                  &nbsp;
+                  <button
+                    className="btn btn-primary click-btn btn-plan"
+                    type="submit"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
         </div>
-      </div>
-      <ConfirmModal />
+      </VipSideBar>
+      {/* /Page Content */}
     </>
   );
-}
-
-export default FreelancerOnbord;
+};
+export default VipSettings;

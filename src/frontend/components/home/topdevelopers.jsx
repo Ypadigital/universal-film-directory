@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 // Import Images
 import $ from "jquery";
-import { FreelancerData, FrelancerSkills } from "../Data/UserDatas";
-import Rating from "../Common/Ratings";
 import FavoriteModal from "../Common/Modals/FavoriteModal";
-import { EmployData } from "../Data/EmployData";
+import { VipData } from "../Data/VipData";
 
 const TopDevelopers = (props) => {
   var settings = {
@@ -51,7 +49,7 @@ const TopDevelopers = (props) => {
             <div className="col-md-7 col-sm-12 col-12 mx-auto">
               <div className="section-header text-center">
                 <div className="section-line" />
-                <h2 className="header-title">VIP's Celebrity</h2>
+                <h2 className="header-title">StarSpace 360</h2>
                 <p>Work with talented people at the most affordable price</p>
               </div>
             </div>
@@ -60,7 +58,7 @@ const TopDevelopers = (props) => {
             <div className="col-md-12">
               {/* <div className="developer-slider slider"> */}
               <Slider {...settings} className="developer-slider">
-                {EmployData.map((item, index) => (
+                {VipData.map((item, index) => (
                   <div key={index} className="freelance-widget">
                     <div className="freelance-content">
                       <div className="freelance-img">
@@ -83,7 +81,7 @@ const TopDevelopers = (props) => {
                     </div>
                     <div className="cart-hover">
                       <Link
-                        to="/freelancer/1"
+                        to="/vip-profile"
                         className="btn-cart"
                         tabIndex={-1}
                       >

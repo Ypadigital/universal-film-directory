@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import Breadcrub from "../../Common/Breadcrub";
 import Filter from "../../Common/Filter";
 import SortsTags from "../../Common/Sorts&Tags";
-import { FreelancerData, FrelancerSkills } from "../../Data/UserDatas";
-import Rating from "../../Common/Ratings";
 import FavoriteModal from "../../Common/Modals/FavoriteModal";
-import { EmployData } from "../../Data/EmployData";
+import { VipData } from "../../Data/VipData";
 
 const VipList = (props) => {
   return (
@@ -19,12 +17,12 @@ const VipList = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
-              <Filter project={false} />
+              <Filter project={true} />
             </div>
             <div className="col-md-12 col-lg-8 col-xl-9">
               <SortsTags />
               <div className="row">
-                {EmployData.map((freelancer) => (
+                {VipData.map((freelancer) => (
                   <div
                     key={freelancer.id}
                     className="col-md-6 col-lg-6 col-xl-4"
@@ -54,7 +52,7 @@ const VipList = (props) => {
                       </div>
                       <div className="cart-hover">
                         <Link
-                          to="/freelancer/1"
+                          to="/vip-profile"
                           className="btn-cart"
                           tabIndex={-1}
                         >

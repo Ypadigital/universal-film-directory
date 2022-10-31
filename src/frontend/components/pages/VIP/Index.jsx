@@ -12,8 +12,8 @@ const VIP = () => {
             <div className="col-md-8 col-lg-5">
               <div className="vip-content">
                 <h1>
-                  Contact <br /> Celebrities <br />
-                  <span className="orange-text">Directly</span>
+                  Star Space <br />
+                  <span className="orange-text">360</span>
                 </h1>
                 <p>
                   Contact award wining <br /> movie celebrities from all <br />{" "}
