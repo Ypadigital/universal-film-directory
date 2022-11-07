@@ -8,7 +8,7 @@ export const VipData = [
     image: vip_img3,
     date: "12, Jan 2021",
     category: "Artist",
-    from: "Bollywood",
+    from: "Hollywood",
   },
   {
     id: 2,
