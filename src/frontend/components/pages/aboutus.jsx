@@ -117,7 +117,8 @@ const Aboutus = () => {
             <div className="col-lg-6 d-flex align-items-center">
               <div className="about-content">
                 <h2>
-                  About <span className="orange-text">StarSpace 360</span>
+                  About{" "}
+                  <span className="orange-text">Universal Film Directory</span>
                 </h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
@@ -163,7 +164,7 @@ const Aboutus = () => {
                 remote resources.
               </p>
               <div className="btn-item">
-                <Link className="btn get-btn" to="/kcy">
+                <Link className="btn get-btn" to="/register">
                   Get Started
                 </Link>
               </div>

@@ -95,19 +95,8 @@ import OTPcode from "./components/pages/OTPcode";
 import PurchaseFilmCoin from "./components/pages/PurchaseFilmCoin";
 import VerifyIdentit from "./components/pages/VerifyIdentit";
 import FreelancerOnbord from "./components/pages/FreelancerOnbord";
-// VIP
-import VIP from "./components/pages/VIP/Index";
-import RequestAccess from "./components/pages/VIP/RequestAccess";
-import VipList from "./components/pages/VIP/VipList";
-import VipProfile from "./components/pages/VIP/Details/VipProfile";
+
 import ViewPortfolio from "./components/pages/ViewPortfolio";
-import VIPDashboard from "./components/pages/VIP/Dashboard/Dashboard";
-import VipProposals from "./components/pages/VIP/Dashboard/ProposalVIP";
-import VipCancelledProjects from "./components/pages/VIP/Dashboard/CancelledVIP";
-import VipPayments from "./components/pages/VIP/Dashboard/PaymentsVIP";
-import VipSettings from "./components/pages/VIP/Dashboard/SettingsVIP";
-import VipProposalFile from "./components/pages/VIP/Dashboard/ViewProjectFilesVip";
-import VipViewProposaldetails from "./components/pages/VIP/Dashboard/ViewProjectVIP";
 
 if (!window.location.pathname.includes("admin")) {
   require("./assets/js/bootstrap.min.js");
@@ -124,30 +113,7 @@ class AppUniversal extends Component {
             {/* home */}
             <Route exact path="/" component={Home} />
             <Route exact path="/post-project" component={PostProject} />
-            {/* vips */}
-            <Route exact path="/vip" component={VIP} />
-            <Route exact path="/request-access" component={RequestAccess} />
-            <Route exact path="/vip-list" component={VipList} />
-            <Route exact path="/vip-profile" component={VipProfile} />
-            <Route exact path="/vip-dashboard" component={VIPDashboard} />
-            <Route exact path="/vip-proposals" component={VipProposals} />
-            <Route
-              exact
-              path="/vip-cancelled"
-              component={VipCancelledProjects}
-            />
-            <Route
-              exact
-              path="/vip-project-view"
-              component={VipViewProposaldetails}
-            />
-            <Route
-              exact
-              path="/vip-project-files"
-              component={VipProposalFile}
-            />
-            <Route exact path="/vip-payment" component={VipPayments} />
-            <Route exact path="/vip-settings" component={VipSettings} />
+
             {/* Freelancer */}
             {/* Others */}
             <Route exact path="/portfolio-overview" component={ViewPortfolio} />
@@ -282,7 +248,7 @@ class AppUniversal extends Component {
             <Route exact path="/404-page" component={Page404} />
             <Route exact path="/freelancer-invoices" component={Invoices} />
             <Route exact path="/view-invoice" component={InvoiceView} />
-            <Route exact path="/kcy" component={Register} />
+            <Route exact path="/register" component={Register} />
             <Route exact path="/otp-code" component={OTPcode} />
             <Route exact path="/buytoken" component={PurchaseFilmCoin} />
             <Route exact path="/verfiyidentit" component={VerifyIdentit} />
