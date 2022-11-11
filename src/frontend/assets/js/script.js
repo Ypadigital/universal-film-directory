@@ -3,6 +3,9 @@ Author       : Dreamguys
 Template Name: Kofejob - Bootstrap Template
 Version      : 1.0
 */
+const bootstrap = require("bootstrap");
+const moment = require("moment");
+const jQuery = require("jquery");
 
 (function ($) {
   "use strict";

@@ -3,6 +3,7 @@ export { default as Logo_01 } from "../assets/images/logo-01.png";
 export { default as Logo_Black } from "../assets/images/logoblack.png";
 export { default as Banner_img } from "../assets/images/banner-img.gif";
 export { default as Appstore } from "../assets/images/app-store.svg";
+export { default as WalletIcon2 } from "../assets/svg/wallet-icon.svg";
 export { default as Googleplay } from "../assets/images/google-play.svg";
 export { default as Subscribe } from "../assets/images/subscribe.png";
 export { default as FileLogo } from "../assets/images/file-logo.png";

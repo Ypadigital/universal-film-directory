@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import $ from "jquery";
 import { Logo, company_img1 } from "../imagepath";
-import ConnectWallet from "../Common/Modals/ConnectWallet";
+import { WalletButton } from "../WalletButton";
 
 const Header = (props) => {
+  const isLoggedIn = false;
   const [isOpen, setisopen] = useState(false);
   useEffect(() => {
     $(".main-nav a").on("click", function (e) {
@@ -61,9 +62,6 @@ const Header = (props) => {
               <li className={pathname === "freelancer" ? "active" : ""}>
                 <Link to="/freelancer">Freelancers</Link>
               </li>
-              <li className={pathname === "/vip" ? "active" : ""}>
-                <Link to="/vip">StarSpace</Link>
-              </li>
               {/* <li className={pathname === "project" ? "active" : ""}>
                 <Link to="/project">Projects</Link>
               </li> */}
@@ -92,37 +90,38 @@ const Header = (props) => {
                   <img src={company_img1} alt="" />
                 </span>
               </div>
-              <div id="checkshow" className="dropdown-menu emp">
-                <div className="drop-head">Account Details</div>
-                <Link className="dropdown-item" to="/freelancer-dashboard">
-                  <i className="fa fa-cog" />
-                  Freelancer Dashboard
-                </Link>
-                <Link className="dropdown-item" to="/vip-dashboard">
-                  <i className="material-icons">verified_user</i> StarSpace 360
-                  Dashboard
-                </Link>
-                <Link className="dropdown-item" to="/dashboard">
-                  <i className="fa fa-th-large" /> Employe Dashboard
-                </Link>
+              {!!isLoggedIn && (
+                <div id="checkshow" className="dropdown-menu emp">
+                  <div className="drop-head">Account Details</div>
+                  <Link className="dropdown-item" to="/freelancer-dashboard">
+                    <i className="fa fa-cog" />
+                    Freelancer Dashboard
+                  </Link>
+                  <Link className="dropdown-item" to="/dashboard">
+                    <i className="fa fa-th-large" /> Employe Dashboard
+                  </Link>
 
-                <Link className="dropdown-item" to="/kcy">
-                  <i className="fas fa-user" /> KCY
-                </Link>
-                <Link className="dropdown-item" to="/">
-                  <i className="material-icons">power_settings_new</i> Logout
-                </Link>
-              </div>
+                  <Link className="dropdown-item" to="/register">
+                    <i className="fas fa-user" /> Register
+                  </Link>
+                  <Link className="dropdown-item" to="/">
+                    <i className="material-icons">power_settings_new</i> Logout
+                  </Link>
+                </div>
+              )}
+              {!!!isLoggedIn && (
+                <div id="checkshow" className="dropdown-menu emp">
+                  <div className="drop-head">You are not Registered</div>
+                  <Link className="dropdown-item" to="/register">
+                    <i className="fas fa-user" />
+                    <span>Register</span>
+                  </Link>
+                </div>
+              )}
             </li>
             {/* /User Menu */}
             <li>
-              <a
-                data-bs-toggle="modal"
-                href="#connectwallet"
-                className="login-btn"
-              >
-                Connect Wallet
-              </a>
+              <WalletButton />
             </li>
           </ul>
 
@@ -190,7 +189,6 @@ const Header = (props) => {
           )} */}
         </nav>
       </header>
-      <ConnectWallet />
       {/* /Header */}
     </>
   );

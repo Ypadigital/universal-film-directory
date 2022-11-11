@@ -22,13 +22,7 @@ const Home = () => {
                 <form className="form" name="store" id="store">
                   <div className="form-inner">
                     <div className="input-group">
-                      <span className="drop-detail">
-                        <select className="form-control select" name="storeID">
-                          <option value="/">Hollywood</option>
-                          <option value="/">Bollywood</option>
-                          <option value="/">Tollywood</option>
-                        </select>
-                      </span>
+                       
                       <input
                         type="email"
                         className="form-control"

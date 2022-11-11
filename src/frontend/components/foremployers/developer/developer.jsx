@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Import Images
@@ -10,6 +10,14 @@ import Rating from "../../Common/Ratings";
 import FavoriteModal from "../../Common/Modals/FavoriteModal";
 
 const Developer = (props) => {
+  const Tags = ["Film", "Artist", "Song Writter", "Photographer"];
+  const [sortType, setsortType] = useState("Latest")
+  const searchResults = [{
+
+  }]
+  const handleSort = (e) => {
+    setsortType(e.target.value);
+  }
   return (
     <>
       {/* Breadcrumb */}
@@ -23,7 +31,42 @@ const Developer = (props) => {
               <Filter project={false} />
             </div>
             <div className="col-md-12 col-lg-8 col-xl-9">
-              <SortsTags />
+              {/* <SortsTags /> */}
+              <div className="sort-tab">
+                <div className="row align-items-center">
+                  <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <div className="d-flex align-items-center">
+                      <div className="freelance-view">
+                        <h4>Showing {searchResults.length} results</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                    <div className="d-flex justify-content-sm-end">
+                      <div className="sort-by">
+                        <select
+                          value={sortType}
+                          onChange={handleSort}
+                          className="custom-select form-select"
+                        >
+                          <option>Rating</option>
+                          <option>Latest</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="bootstrap-tags text-start pl-0">
+                {Tags.map((tag, index) => (
+                  <span key={index} className="badge badge-pill badge-skills">
+                    {tag}
+                    <span className="tag-close" data-role="remove">
+                      <i className="fas fa-times" />
+                    </span>
+                  </span>
+                ))}
+              </div>
               <div className="row">
                 {FreelancerData.map((freelancer) => (
                   <div

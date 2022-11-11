@@ -49,7 +49,7 @@ const TopDevelopers = (props) => {
             <div className="col-md-7 col-sm-12 col-12 mx-auto">
               <div className="section-header text-center">
                 <div className="section-line" />
-                <h2 className="header-title">StarSpace 360</h2>
+                <h2 className="header-title">Universal Film Directory</h2>
                 <p>Work with talented people at the most affordable price</p>
               </div>
             </div>

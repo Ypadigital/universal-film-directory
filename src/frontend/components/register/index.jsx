@@ -1,8 +1,78 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Logo_01 } from "../imagepath";
+import $ from "jquery";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Input } from "../Common/Input";
+import useCanCallWeb3Method from "../../hooks/useCanCallWeb3Method";
+import { ethers } from "ethers";
+import { RegisterUser } from "../../services/authService";
+import { apiErrorMessage } from "../../utils/handleAPIErrors";
+import { toast } from "react-toastify";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { getSigner, setAuthToken } from "../../utils/helpers";
+
+const validationSchema = Yup.object({
+  firstName: Yup.string().required(),
+  lastName: Yup.string().required(),
+  email: Yup.string().email().required(),
+  signature: Yup.string(),
+  isContractor: Yup.boolean().required("Required"),
+});
 
 const Register = (props) => {
+  const { canRunWeb3, cannotCallWeb3Error } = useCanCallWeb3Method();
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    signature: "",
+    isContractor: false,
+  };
+  const handleSubmit = async (values) => {
+    if (!canRunWeb3) return toast.error(cannotCallWeb3Error);
+
+    const toastId = toast.loading("Registering User...");
+    try {
+      const signer = getSigner();
+      const message =
+        "UF Directory wants you to confirm your identity, please sign this message to proceed.";
+      const signature = await signer.signMessage(message);
+      const user = await RegisterUser({ ...values, signature });
+      setAuthToken(user.data.data);
+      console.log(values, user);
+      toast.update(toastId, {
+        render: "User Registered Successfully!",
+        type: "error",
+        isLoading: false,
+        pauseOnFocusLoss: false,
+      });
+    } catch (error) {
+      const message = apiErrorMessage(error);
+      toast.update(toastId, {
+        render: message,
+        type: "error",
+        isLoading: false,
+        pauseOnFocusLoss: false,
+      });
+    }
+  };
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: handleSubmit,
+  });
+  const isContractor = formik.values.isContractor;
+  const tabClass = (name) => {
+    if (isContractor && name === "contractor") return "nav-link active";
+    if (!isContractor && name === "freelancer") return "nav-link active";
+    return "nav-link";
+  };
+  const switchTab = (name) => {
+    if (name === "contractor") formik.setFieldValue("isContractor", true);
+    else formik.setFieldValue("isContractor", false);
+  };
+
   useEffect(() => {
     if ($(".floating").length > 0) {
       $(".floating")
@@ -33,7 +103,7 @@ const Register = (props) => {
                 <div className="align-items-center justify-content-center">
                   <div className="login-right">
                     <div className="login-header text-center">
-                      <h3>Join StarSpace 360</h3>
+                      <h3>Join the Universal Film Directory</h3>
                       <p>Make the most of your professional life</p>
                     </div>
                     <nav className="user-tabs mb-4">
@@ -41,155 +111,54 @@ const Register = (props) => {
                         role="tablist"
                         className="nav nav-pills nav-justified"
                       >
-                        <li className="nav-item">
-                          <a
-                            href="#developer"
-                            data-bs-toggle="tab"
-                            className="nav-link active"
-                          >
+                        <li
+                          className="nav-item"
+                          onClick={() => switchTab("freelancer")}
+                        >
+                          <span className={tabClass("freelancer")}>
                             FREELANCER
-                          </a>
+                          </span>
                         </li>
-                        <li className="nav-item">
-                          <a
-                            href="#company"
-                            data-bs-toggle="tab"
-                            className="nav-link"
-                          >
-                            COMPANY
-                          </a>
+                        <li
+                          className="nav-item"
+                          onClick={() => switchTab("contractor")}
+                        >
+                          <span className={tabClass("contractor")}>
+                            CONTRACTOR
+                          </span>
                         </li>
                       </ul>
                     </nav>
-                    <div className="tab-content pt-0">
-                      <div
-                        role="tabpanel"
-                        id="developer"
-                        className="tab-pane fade active show"
-                      >
-                        <form>
-                          <div className="form-group form-focus">
-                            <input
-                              type="text"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">User Name</label>
-                          </div>
-                          <div className="form-group form-focus">
-                            <input
-                              type="email"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">Email</label>
-                          </div>
-                          <div className="form-group form-focus">
-                            <input
-                              type="number"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">Phone Number </label>
-                          </div>
-                          <div className="form-group form-focus">
-                            <input
-                              type="password"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">Password</label>
-                          </div>
-                          <div className="form-group form-focus mb-0">
-                            <input
-                              type="password"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">
-                              Confirm Password
-                            </label>
-                          </div>
-                          <div className="dont-have">
-                            <label className="custom_check">
-                              <input type="checkbox" name="rem_password" />
-                              <span className="checkmark" /> You agree to the
-                              Kofejob{" "}
-                              <Link to="/privacy-policy">
-                                User Agreement, Privacy Policy,
-                              </Link>{" "}
-                              and{" "}
-                              <Link to="/privacy-policy">Cookie Policy</Link>.
-                            </label>
-                          </div>
-                          <Link
-                            to="/otp-code"
-                            className="btn btn-primary btn-block btn-lg login-btn"
-                          >
-                            Agree TO JOIN
-                          </Link>
-                        </form>
+                    <form onSubmit={formik.handleSubmit}>
+                      <Input
+                        name="firstName"
+                        formik={formik}
+                        label="First Name"
+                      />
+                      <Input
+                        name="lastName"
+                        formik={formik}
+                        label="Last Name"
+                      />
+                      <Input name="email" formik={formik} label="Email" />
+                      <div className="dont-have">
+                        <label className="custom_check">
+                          <input type="checkbox" name="rem_password" />
+                          <span className="checkmark" /> You agree to the
+                          Kofejob{" "}
+                          <Link to="/privacy-policy">
+                            User Agreement, Privacy Policy,
+                          </Link>{" "}
+                          and <Link to="/privacy-policy">Cookie Policy</Link>.
+                        </label>
                       </div>
-                      <div
-                        role="tabpanel"
-                        id="company"
-                        className="tab-pane fade"
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-block btn-lg login-btn"
                       >
-                        <form>
-                          <div className="form-group form-focus">
-                            <input
-                              type="text"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">User Name</label>
-                          </div>
-                          <div className="form-group form-focus">
-                            <input
-                              type="email"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">Email </label>
-                          </div>
-                          <div className="form-group form-focus">
-                            <input
-                              type="number"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">Phone </label>
-                          </div>
-                          <div className="form-group form-focus">
-                            <input
-                              type="password"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">Password</label>
-                          </div>
-                          <div className="form-group form-focus mb-0">
-                            <input
-                              type="password"
-                              className="form-control floating"
-                            />
-                            <label className="focus-label">
-                              Confirm Password
-                            </label>
-                          </div>
-                          <div className="dont-have">
-                            <label className="custom_check">
-                              <input type="checkbox" name="rem_password" />
-                              <span className="checkmark" /> You agree to the
-                              Kofejob{" "}
-                              <Link to="/privacy-policy">
-                                User Agreement, Privacy Policy,
-                              </Link>{" "}
-                              and{" "}
-                              <Link to="/privacy-policy">Cookie Policy</Link>.
-                            </label>
-                          </div>
-                          <Link
-                            to="/verfiyidentit"
-                            className="btn btn-primary btn-block btn-lg login-btn"
-                            type="submit"
-                          >
-                            Agree TO JOIN
-                          </Link>
-                        </form>
-                      </div>
-                    </div>
+                        Agree TO JOIN
+                      </button>
+                    </form>
                   </div>
                 </div>
               </div>
