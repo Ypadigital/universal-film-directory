@@ -12,7 +12,8 @@ function Input({
   ...rest
 }) {
   const error = formik.touched[name] && formik.errors?.[name];
-  let classes = `${styles.container} ${className} form-group form-focus`;
+  let classes = `${styles.container} form-group form-focus`;
+  if (className) classes += ` ${className}`;
   if (error) classes += styles["error"];
   let placeholder = rest.placeholder;
   if (formik) {

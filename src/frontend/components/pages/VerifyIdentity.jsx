@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Breadcrub from "../Common/Breadcrub";
+import Breadcrumb from "../Common/Breadcrumb";
 
-function VerifyIdentit() {
+function VerifyIdentity() {
   return (
     <>
-      <Breadcrub title="Verify Identity" />
+      <Breadcrumb title="Verify Identity" />
       <div className="content">
         <div className="container">
           <div className="card">
@@ -94,4 +94,4 @@ function VerifyIdentit() {
   );
 }
 
-export default VerifyIdentit;
+export default VerifyIdentity;

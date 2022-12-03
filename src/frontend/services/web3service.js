@@ -35,6 +35,8 @@ export async function getCurrentNetwork() {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
   const network = await signer.provider._networkPromise;
+  if (network.chainId.toString() === "80001") network.chainId = "0x13881";
+
   return network;
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Breadcrub({ title }) {
+function Breadcrumb({ title }) {
   return (
     <div className="breadcrumb-bar">
       <div className="container">
@@ -25,4 +25,4 @@ function Breadcrub({ title }) {
   );
 }
 
-export default Breadcrub;
+export default Breadcrumb;

@@ -5,18 +5,27 @@ import { ToastContainer } from "react-toastify";
 
 import AppRouter from "./approuter";
 
-import { Loader } from "./components/Loader";
+import { APILoader } from "./components/APILoader";
 import { AppProvider } from "./contexts/appContext";
+import { DataProvider } from "./contexts/dataContext";
+import { LoadingProvider } from "./contexts/loadingContext";
 
 export default function App() {
   return (
     <>
-      <Loader />
-      <ToastContainer position="top-center" autoClose={5000} />
+      <ToastContainer
+        pauseOnFocusLoss={true}
+        position="top-center"
+        autoClose={5000}
+      />
       <AppProvider>
-        <AppRouter />
+        <LoadingProvider>
+          <APILoader />
+          <DataProvider>
+            <AppRouter />
+          </DataProvider>
+        </LoadingProvider>
       </AppProvider>
-      {/* <script src="https://cdn.jsdelivr.net/npm/react-toastify@9.1.1/dist/react-toastify.min.js"></script> */}
     </>
   );
 }

@@ -23,14 +23,6 @@ const Freelancer = (props) => {
         <nav className="user-tabs mb-4">
           <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
             <li className="nav-item">
-              <Link
-                className="nav-link active"
-                to="/freelancer-project-proposals"
-              >
-                My Proposals
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/freelancer-ongoing-projects">
                 Ongoing Projects
               </Link>
@@ -92,7 +84,7 @@ const Freelancer = (props) => {
                           <div className="content-divider" />
                           <div className="projects-action text-center">
                             <Link
-                              to="/freelancer-view-project-detail"
+                              to="/freelancer-projects/:id"
                               className="projects-btn"
                             >
                               View Details{" "}

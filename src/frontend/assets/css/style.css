@@ -65,24 +65,43 @@ Version      : 1.0
     rgba(36, 21, 56, 1) 54%,
     rgba(70, 33, 120, 1) 100%
   );
-}
-:root {
-  --app-purple: #8e68e4;
-  --app-grey: #86949a;
-  --app-blue: #2952e3;
+
+  /* Color settings */
+  --app-bg-color: #f3f3f3;
+  --app-bg-color-alt: #f8f8ff;
+  --app-bg-alt: #000;
+  --app-grey-light: #ededed;
+  --app-grey-medium: #c0c0c0;
   --app-red: #f84550;
   --app-secondary-red: #f63e50;
-  --app-yellow: #e9ba42;
-  --app-green: #03a65a;
-  --app-secondary-green: #50af95;
-  --app-primary-text: poppins;
+  --app-grey: #6e6d6d;
+  --app-gray: #777e90;
+  --app-blue-light: #eef0ff;
+  --app-green: #318509;
+  --app-purple: #7611f7;
+  --app-blue: #3b4ef2;
+  --app-orange: #f2bf3b;
+  --app-text-color: #000;
+  --app-tooltip-bg: #404040;
+  /* Width Settings  */
+  /* Font settings */
+  --app-primary-font: "Roboto", helvetica;
+  --app-secondary-font: "Coolvetica", sans-serif;
+  --app-border-radius-sm: 10px;
+  --app-letter-spacing-lg: 0.5rem;
+  --app-letter-spacing-md: 0.2rem;
+  /* Z-Index settings */
   --header-z-index: 1000;
   --sidebar-z-index: 1500;
   --form-z-index: 2000;
   --overlay-z-index: 2000;
   --modal-z-index: 2000;
+  --select-z-index: 2000;
   --loader-z-index: 2500;
   --toast-z-index: 2500;
+  /* settings */
+  --app-header-height: 67px;
+  --auth-header-height: 74px;
 }
 
 @font-face {
@@ -6803,7 +6822,7 @@ label.file-upload input[type="file"] {
   border-radius: 50%;
 }
 .author-details {
-  margin-left: 116px;
+  /* margin-left: 116px; */
 }
 .author-details .blog-author-name {
   display: inline-block;
@@ -9192,7 +9211,7 @@ label.file-upload input[type="file"] {
   background: #fff;
   border: 1px solid #e8e8e8;
   box-shadow: 0px 4px 4px rgba(204, 204, 204, 0.25);
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 .settings-header {
   background: var(--main-color);
@@ -13081,4 +13100,20 @@ body.chat-page {
 }
 .noUi-origin {
   left: auto !important;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.handle-overflow {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 80%;
 }

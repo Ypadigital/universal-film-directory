@@ -5,25 +5,31 @@ import React, {
   useEffect,
   useCallback,
 } from "react";
+import { useHistory } from "react-router-dom";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 import {
   connectToMetaMask,
-  listenToAccountChanges,
   hasEthereum,
   unmountEthListeners,
-  listenToNetworkChanges,
   getCurrentNetwork,
 } from "../services/web3service";
-import { NotificationManager as toast } from "react-notifications";
+import { getAuthToken, setAuthToken } from "../utils/helpers";
+import toast from "../utils/toast";
 
 const AppContext = createContext();
 
 export function AppProvider({ children }) {
+  const [authToken, setAuthToken] = useLocalStorage("ufd-auth-token", null);
+
+  const [isLoggedIn, handleSetLogin] = useState(authToken ? true : false);
+  const router = useHistory();
+
   const [isInitiallyFetched, setIsInitiallyFetched] = useState(false);
   const [wallet, setWallet] = useState("");
   const [network, setNetwork] = useState(process.env.REACT_APP_CHAIN_ID);
   const [hasMetaMask, setHasMetaMask] = useState(true);
-  console.log(process.env.REACT_APP_CHAIN_ID)
+
   const handleWalletConnect = useCallback(() => {
     (async () => {
       const connection = await connectToMetaMask();
@@ -39,48 +45,16 @@ export function AppProvider({ children }) {
     })();
     return;
   }, []);
-
-  const handleWalletDisconnect = () => {
-    setWallet("");
-    localStorage.removeItem("wallet-connection");
+  const handleLogout = () => {
+    localStorage.removeItem("ufd-auth-token");
+    handleSetLogin(false);
+    router.push("/");
   };
-
-  const handleAccountChanged = useCallback(
-    () => (address) => {
-      if (!address) return handleWalletDisconnect();
-      setWallet(address);
-    },
-    []
-  );
-
-  const handleNetworkChanged = useCallback(
-    () => async (chainId) => {
-      if (!wallet) return handleWalletDisconnect();
-      const network = await getCurrentNetwork();
-      console.log({ network, chainId });
-      setNetwork(chainId);
-    },
-    [wallet]
-  );
-
-  useEffect(() => {
-    if (!isInitiallyFetched) return;
-
-    if (!hasEthereum()) return;
-    (async () => {
-      const network = await getCurrentNetwork();
-      setNetwork(network);
-    })();
-    window.ethereum.on("accountsChanged", async (accounts) => {
-      handleAccountChanged(accounts[0]);
-      console.log("Account Changed", accounts[0]);
-    });
-    window.ethereum.on("chainChanged", async (chainId) => {
-      handleNetworkChanged(chainId);
-      console.log({ chainId });
-    });
-    return () => unmountEthListeners();
-  }, [handleAccountChanged, handleNetworkChanged, isInitiallyFetched]);
+  const handleWalletDisconnect = () => {
+    localStorage.removeItem("wallet-connection", false);
+    setWallet("");
+    handleLogout();
+  };
 
   useEffect(() => {
     if (isInitiallyFetched) return;
@@ -93,6 +67,29 @@ export function AppProvider({ children }) {
     return;
   }, [handleWalletConnect, isInitiallyFetched]);
 
+  useEffect(() => {
+    if (!isInitiallyFetched) return;
+
+    if (!hasEthereum()) return;
+    (async () => {
+      const network = await getCurrentNetwork();
+      setNetwork(network.chainId);
+    })();
+  }, [isInitiallyFetched]);
+
+  useEffect(() => {
+    window.ethereum.on("accountsChanged", async (accounts) => {
+      console.log(accounts);
+      if (!accounts[0]) handleWalletDisconnect();
+      setWallet(accounts[0]);
+      handleLogout();
+    });
+    window.ethereum.on("chainChanged", async (chainId) => {
+      setNetwork(chainId);
+    });
+    return () => unmountEthListeners();
+  }, [router]);
+
   return (
     <AppContext.Provider
       value={{
@@ -102,6 +99,9 @@ export function AppProvider({ children }) {
         handleWalletConnect,
         handleWalletDisconnect,
         hasMetaMask,
+        isLoggedIn,
+        handleSetLogin,
+        handleLogout,
       }}
     >
       {children}

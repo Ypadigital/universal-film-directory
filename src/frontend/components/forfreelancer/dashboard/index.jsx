@@ -1,65 +1,52 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import StickyBox from "react-sticky-box";
-import DasboardSideBar from "../../Common/DasboardSideBar";
-import Charts from "./Charts";
-import { FreelancerData } from "../../Data/UserDatas";
-import { FreelancerSidebarData } from "../../Data/DashboardData";
 import SideBar from "../../Common/SideBar";
+import { useDataContext } from "../../../contexts/dataContext";
+import {
+  freelancerDashboardCardInfo,
+  getRandomKey,
+} from "../../../utils/helpers";
+import ProfileViewsChart from "../../Common/ProfileViewsChart";
+import StaticAnalyticsChart from "../../Common/StaticAnalyticsChart";
 
 const FreelancerDashboard = (props) => {
-  const user = FreelancerData[3];
-  const Cards = [
-    {
-      title: "Completed Jobs",
-      value: user.completedProjects,
-      link: "freelancer-completed-projects",
-    },
-    {
-      title: "Ongoing Jobs",
-      value: user.onGoingProjects,
-      link: "freelancer-ongoing-projects",
-    },
-    {
-      title: "Reviews",
-      value: 30,
-      link: "freelancer-review",
-    },
-  ];
-
   useEffect(() => {
     document.body.className = "dashboard-page";
     return () => {
       document.body.className = "";
     };
   });
-
+  let { user } = useDataContext();
+  if (!user) return "";
+  if (user && !!!user.isLoading) {
+    user = user.data;
+  }
+  // const completedJobsCard =
+  const InfoCards = freelancerDashboardCardInfo(user);
   return (
     <>
       {/* Page Content */}
       <SideBar freelancer={true}>
         <div className="dashboard-sec">
           <div className="row">
-            {Cards.map((card, index) => (
-              <div key={index} className="col-md-6 col-lg-4">
-                <div className="dash-widget">
-                  <div className="dash-info">
-                    <div className="dash-widget-info">{card.title}</div>
-                    <div className="dash-widget-count">{card.value}</div>
-                  </div>
-                  <div className="dash-widget-more">
-                    <Link to={`/${card.link}`} className="d-flex">
-                      View Details <i className="fas fa-arrow-right ms-auto" />
-                    </Link>
-                  </div>
-                </div>
+            {InfoCards.map((card, index) => (
+              <div className="col-6 col-lg-4">
+                <InfoCard card={card} key={getRandomKey()} />
               </div>
             ))}
           </div>
           {/* Chart Content */}
-          <p className="my-4 text-xl">Remember to work on charts!</p>
 
           {/* <Charts /> */}
+          <div className="row">
+            <div className="col-md-8">
+              <ProfileViewsChart />
+            </div>
+            <div className="col-md-4 d-flex">
+              <StaticAnalyticsChart />
+            </div>
+          </div>
+
           {/* /Chart Content */}
         </div>
       </SideBar>
@@ -67,4 +54,21 @@ const FreelancerDashboard = (props) => {
     </>
   );
 };
+
+const InfoCard = ({ card }) => {
+  return (
+    <div className="dash-widget">
+      <div className="dash-info">
+        <div className="dash-widget-info">{card.title}</div>
+        <div className="dash-widget-count">{card.value}</div>
+      </div>
+      <div className="dash-widget-more">
+        <Link to={`/${card.link}`} className="d-flex">
+          View Details <i className="fas fa-arrow-right ms-auto" />
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 export default FreelancerDashboard;

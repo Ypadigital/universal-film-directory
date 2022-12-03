@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Breadcrub from "../../Common/Breadcrub";
+import Breadcrumb from "../../Common/Breadcrumb";
 import VipModal from "../../Common/Modals/VipModal";
 
 function RequestAccess() {
   return (
     <>
-      <Breadcrub title="Request Access " />
+      <Breadcrumb title="Request Access " />
       <div className="content">
         <div className="container">
           <form>

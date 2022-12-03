@@ -1,4 +1,12 @@
 import React, { useEffect } from "react";
+import ReactStars from "react-rating-stars-component";
+
+import { useDataContext } from "../../../contexts/dataContext";
+import {
+  formatReviews,
+  getRandomKey,
+  getRatingConfig,
+} from "../../../utils/helpers";
 import SideBar from "../../Common/SideBar";
 
 const Review = (props) => {
@@ -8,86 +16,49 @@ const Review = (props) => {
       document.body.className = "";
     };
   });
-
+  const { projects } = useDataContext();
+  let jobs = projects.data;
+  if (!!!projects.isLoading) {
+    jobs = jobs.filter((project) => project.status === "Completed");
+  }
+  if (!jobs.length) return "Loading...";
+  const starsUI = {
+    emptyIcon: <i className="far fa-star" />,
+    halfIcon: <i className="fa fa-star-half-alt" />,
+    filledIcon: <i className="fa fa-star" />,
+  };
+  let reviews = formatReviews(jobs);
   return (
     <>
-      {/* Page Content */}
-      <SideBar freelancer={true}>
-        <div className="card">
-          <div className="card-header">
-            <h3 className="pro-title without-border">Reviews</h3>
-          </div>
-          <div className="card-body">
-            <div className="reviews">
-              <div className="review-content no-padding">
-                <h4>Fix Python Selenium Code</h4>
-                <div className="rating">
-                  <span className="average-rating">4.6</span>
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star" />
-                </div>
-                <p className="mb-0">
-                  Great clarity in specification and communication. I got
-                  payment really fast. Really recommend this employer for his
-                  professionalism. I will work for him again with pleasure.
-                </p>
-              </div>
-              <div className="review-content no-padding">
-                <h4>Adsense Expert</h4>
-                <div className="rating">
-                  <span className="average-rating">3.4</span>
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star" />
-                  <i className="fas fa-star" />
-                </div>
-                <p className="mb-0">
-                  Great clarity in specification and communication. I got
-                  payment really fast. Really recommend this employer for his
-                  professionalism. I will work for him again with pleasure.
-                </p>
-              </div>
-              <div className="review-content no-padding">
-                <h4>Create website wordpress for a Brand</h4>
-                <div className="rating">
-                  <span className="average-rating">4.2</span>
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star" />
-                </div>
-                <p className="mb-0">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since
-                </p>
-              </div>
-              <div className="review-content no-padding">
-                <h4>Email automation set up and segmentation</h4>
-                <div className="rating">
-                  <span className="average-rating">3.6</span>
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star filled" />
-                  <i className="fas fa-star" />
-                  <i className="fas fa-star" />
-                </div>
-                <p className="mb-0">
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum
-                </p>
+      {jobs && !!!jobs.isLoading && (
+        <SideBar freelancer={true}>
+          <div className="card">
+            <div className="card-header">
+              <h3 className="pro-title without-border">Reviews</h3>
+            </div>
+            <div className="card-body">
+              <div className="reviews">
+                {reviews.map((data, index) => (
+                  <div
+                    key={getRandomKey()}
+                    className="review-content no-padding"
+                  >
+                    <h4>{data.title}</h4>
+                    <div className="d-flex gap-10">
+                      <span className="average-rating">{data.rating}</span>
+                      <ReactStars
+                        {...starsUI}
+                        {...getRatingConfig(data.rating)}
+                      />
+                    </div>
+                    <p className="mb-0">{data.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </SideBar>
-      {/* /Page Content */}
+        </SideBar>
+      )}
     </>
   );
 };

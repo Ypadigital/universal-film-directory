@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Breadcrub from "../Common/Breadcrub";
+import Breadcrumb from "../Common/Breadcrumb";
 
 function PurchaseFilmCoin() {
   return (
     <>
-      <Breadcrub title="Purchase FilmCoin" />
+      <Breadcrumb title="Purchase FilmCoin" />
       <div className="content">
         <div className="container">
           <div className="row col-12">

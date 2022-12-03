@@ -13,7 +13,7 @@ const networkDetails = [
 ];
 
 const getNetworkFromChainId = (chainId) => {
-  return networkDetails.find((network) => network.chainId === "0x" + chainId);
+  return networkDetails.find((network) => network.chainId === chainId);
 };
 
 export { networkDetails, getNetworkFromChainId };

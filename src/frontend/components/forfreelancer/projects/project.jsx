@@ -27,7 +27,7 @@ const Projects = () => {
               <SortsTags />
               <div className="row">
                 {/* Project Content */}
-                {ProjectsData.map((project, index) => (
+              {ProjectsData.map((project, index) => (
                   <div key={index} className="col-md-6 col-lg-12 col-xl-6">
                     <div className="freelance-widget widget-author">
                       <div className="freelance-content">

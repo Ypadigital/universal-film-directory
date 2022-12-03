@@ -146,10 +146,7 @@ function ChartsEmployer() {
     let invoiceColumn = document.getElementById("chartradial");
     let invoiceChart = new ApexCharts(invoiceColumn, chartradialOptions);
     invoiceChart.render();
-    document.body.className = "dashboard-page";
-    return () => {
-      document.body.className = "";
-    };
+
   });
   return (
     <div className="row">

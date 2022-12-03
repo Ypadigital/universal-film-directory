@@ -25,7 +25,7 @@ const EditProject = (props) => {
             <div className="col-md-12">
               <div className="text-end mb-4">
                 <Link
-                  to="/dashboard/contractor/manage-projects"
+                  to="/dashboard/manage-projects"
                   className="btn btn-primary back-btn br-0"
                 >
                   <i className="fas fa-long-arrow-alt-left" /> Back to Project{" "}
