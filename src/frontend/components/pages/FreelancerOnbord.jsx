@@ -1,14 +1,13 @@
 import React from "react";
 import ReactSummernote from "react-summernote";
-import Breadcrub from "../Common/Breadcrub";
+import Breadcrumb from "../Common/Breadcrumb";
 import ConfirmModal from "../Common/Modals/ConfirmModal";
-import TableEdSkill from "../Common/TableEdSkill";
 import { Developer_01 } from "../imagepath";
 
 function FreelancerOnbord() {
   return (
     <>
-      <Breadcrub title="Onbording" />
+      <Breadcrumb title="Onbording" />
       <div className="content">
         <div className="container">
           <div className="setting-content">
@@ -253,8 +252,6 @@ function FreelancerOnbord() {
                 </div>
               </div>
               {/* education */}
-              <TableEdSkill title="Education" main={true} />
-              <TableEdSkill title="Experiance" main={false} />
               {/* Shot desc */}
               <div className="card">
                 <div className="pro-head">

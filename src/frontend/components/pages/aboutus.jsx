@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // Import Slick Slider
 import Slider from "react-slick";
-import Breadcrub from "../Common/Breadcrub";
+import Breadcrumb from "../Common/Breadcrumb";
 // Import Images
 import { About_img } from "../imagepath";
 
@@ -40,7 +40,7 @@ const Aboutus = () => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="About Us" />
+      <Breadcrumb title="About Us" />
       {/* /Breadcrumb */}
       {/* About */}
       <section className="section about">

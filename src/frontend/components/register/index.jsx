@@ -5,18 +5,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Input } from "../Common/Input";
 import useCanCallWeb3Method from "../../hooks/useCanCallWeb3Method";
-import { ethers } from "ethers";
-import { RegisterUser } from "../../services/authService";
+import { RegisterUser } from "../../services/userService";
 import { apiErrorMessage } from "../../utils/handleAPIErrors";
-import { toast } from "react-toastify";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { getSigner, setAuthToken } from "../../utils/helpers";
+import { getSignature, getSigner, setAuthToken } from "../../utils/helpers";
+import toast from "../../utils/toast";
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required(),
   lastName: Yup.string().required(),
   email: Yup.string().email().required(),
-  signature: Yup.string(),
   isContractor: Yup.boolean().required("Required"),
 });
 
@@ -26,37 +23,30 @@ const Register = (props) => {
     firstName: "",
     lastName: "",
     email: "",
-    signature: "",
     isContractor: false,
   };
-  const handleSubmit = async (values) => {
-    if (!canRunWeb3) return toast.error(cannotCallWeb3Error);
+  const handleSubmit = (values) => {
+    (async () => {
+      if (!canRunWeb3) return toast.error(cannotCallWeb3Error);
 
-    const toastId = toast.loading("Registering User...");
-    try {
-      const signer = getSigner();
-      const message =
-        "UF Directory wants you to confirm your identity, please sign this message to proceed.";
-      const signature = await signer.signMessage(message);
-      const user = await RegisterUser({ ...values, signature });
-      setAuthToken(user.data.data);
-      console.log(values, user);
-      toast.update(toastId, {
-        render: "User Registered Successfully!",
-        type: "error",
-        isLoading: false,
-        pauseOnFocusLoss: false,
-      });
-    } catch (error) {
-      const message = apiErrorMessage(error);
-      toast.update(toastId, {
-        render: message,
-        type: "error",
-        isLoading: false,
-        pauseOnFocusLoss: false,
-      });
-    }
+      const toastId = toast.loading("Registering User...");
+      try {
+        const signature = await getSignature();
+        const user = await RegisterUser({ ...values, signature });
+        setAuthToken(user.data.data);
+        toast.update(toastId, "User Registered Successfully", {
+          onClose: () => {
+            if (values.isContractor) props.history.push("/dashboard");
+            else props.history.push("/freelancer-dashboard");
+          },
+        });
+      } catch (error) {
+        const message = apiErrorMessage(error);
+        toast.update(toastId, message, { type: "error" });
+      }
+    })();
   };
+
   const formik = useFormik({
     initialValues,
     validationSchema,

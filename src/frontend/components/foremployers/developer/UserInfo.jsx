@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { getAverage, getFullName } from "../../../utils/helpers";
 import Rating from "../../Common/Ratings";
 import { Flags_pl } from "../../imagepath";
 
@@ -12,26 +13,20 @@ function UserInfo({ freelancer }) {
             <div className="provider-widget">
               <div className="pro-info-left">
                 <div className="provider-img">
-                  <img src={freelancer.image} alt="User" />
+                  <img src={freelancer.user.image} alt="" />
                 </div>
                 <div className="profile-info">
-                  <h2 className="profile-title">{freelancer?.name}</h2>
-                  <p className="profile-position">{freelancer?.category}</p>
-                  <div>
-                    <div className="btn full-btn">{freelancer.type}</div>
-                  </div>
+                  <h2 className="profile-title">{getFullName(freelancer.user)}</h2>
+                  <p className="profile-position">{freelancer.description}</p>
 
                   <ul className="profile-preword">
-                    <li>
-                      <img src={Flags_pl} alt="" height={16} />{" "}
-                      {freelancer?.location}
-                    </li>
+                    <li>{freelancer.location}</li>
                     <li>
                       <div className="rating">
                         <span className="average-rating">
-                          {freelancer?.totalRates}
+                          {getAverage(freelancer.ratings)}
                         </span>
-                        <Rating value={freelancer.totalRates} />
+                        <Rating value={getAverage(freelancer.ratings)} />
                       </div>
                     </li>
                   </ul>
@@ -47,36 +42,20 @@ function UserInfo({ freelancer }) {
             </div>
           </div>
           <div className="profile-list">
-            <ul>
-              <li>
+            <ul className="row">
+              <li className="col-4">
                 <span className="cont bg-blue">
-                  {freelancer.completedProjects}
+                  {freelancer.noOfCompletedJobs}
                 </span>
                 <strong className="proj-title"> Completed Projects</strong>
               </li>
-              <li>
-                <span className="cont bg-red">
-                  {freelancer.onGoingProjects}
-                </span>
+              <li className="col-4">
+                <span className="cont bg-red">{freelancer.noOfOngoingJobs}</span>
                 <strong className="proj-title"> Ongoing Projects</strong>
               </li>
-              <li>
-                <span className="cont bg-violet">{freelancer.recomended}%</span>
-                <strong className="proj-title"> Recommended</strong>
-              </li>
-              <li>
-                <span className="cont bg-yellow">{freelancer.hired}</span>
-                <strong className="proj-title"> Rehired</strong>
-              </li>
-              <li>
-                <span className="cont bg-pink">{freelancer.clients}</span>
-                <strong className="proj-title"> Clients</strong>
-              </li>
-              <li>
-                <span className="cont bg-navy">
-                  {freelancer.reviwes.length}
-                </span>
-                <strong className="proj-title"> Feedbacks</strong>
+              <li className="col-4">
+                <span className="cont bg-navy">{freelancer.noOfReviews}</span>
+                <strong className="proj-title"> Reviews</strong>
               </li>
             </ul>
           </div>

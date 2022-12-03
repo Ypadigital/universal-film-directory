@@ -10,6 +10,11 @@
   /* transition: 0.6s; */
 }
 
+.container.btn-red {
+  background-color: var(--app-red) !important;
+  border: transparent;
+}
+
 .container:hover {
   color: #fff;
 }

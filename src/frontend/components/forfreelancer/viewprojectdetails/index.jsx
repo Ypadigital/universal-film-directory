@@ -15,38 +15,6 @@ const FreelancerViewProjectdetails = (props) => {
     <>
       {/* Page Content */}
       <SideBar freelancer={true}>
-        <nav className="user-tabs mb-4">
-          <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
-            <li className="nav-item">
-              <Link
-                className="nav-link active"
-                to="/freelancer-view-project-detail"
-              >
-                Overview &amp; Discussions
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/freelancer-milestones">
-                Milestones
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/freelancer-task">
-                Tasks
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/freelancer-files">
-                Files
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/freelancer-payment">
-                Payments
-              </Link>
-            </li>
-          </ul>
-        </nav>
         {/* project list */}
         <div className="my-projects">
           <div className="row">

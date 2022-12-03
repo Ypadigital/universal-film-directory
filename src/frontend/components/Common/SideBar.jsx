@@ -1,5 +1,6 @@
 import React from "react";
 import StickyBox from "react-sticky-box";
+import { useDataContext } from "../../contexts/dataContext";
 import {
   EmployerSidebarData,
   FreelancerSidebarData,
@@ -8,13 +9,13 @@ import { EmployData } from "../Data/EmployData";
 import { FreelancerData } from "../Data/UserDatas";
 import DasboardSideBar from "./DasboardSideBar";
 
-function SideBar({ children, freelancer }) {
+function SideBar({ children, freelancer, user }) {
   return (
     <div className="content">
       <div className="container-fluid">
         <div className="row">
           <div className="col-xl-3 col-md-4 theiaStickySidebar">
-            <StickyBox offsetTop={20} offsetBottom={20}>
+            <StickyBox offsetTop={144} offsetBottom={20}>
               <DasboardSideBar
                 data={freelancer ? FreelancerSidebarData : EmployerSidebarData}
                 user={freelancer ? FreelancerData[3] : EmployData[2]}

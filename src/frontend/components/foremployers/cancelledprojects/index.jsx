@@ -17,12 +17,7 @@ const CancelledProjects = (props) => {
       {/* Page Content */}
       <SideBar freelancer={false}>
         <nav className="user-tabs project-tabs">
-          <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
-            <li className="nav-item">
-              <Link className="nav-link" to="/manage-projects">
-                All Projects
-              </Link>
-            </li>
+          <ul className="nav nav-tabs nav-tabs-bottom nav-justified"> 
             <li className="nav-item">
               <Link className="nav-link" to="/pending-projects">
                 Pending Projects

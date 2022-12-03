@@ -7,10 +7,10 @@ export const FreelancerSidebarData = [
   {
     name: "Jobs",
     icon: "business_center",
-    link: "freelancer-project-proposals",
+    link: "freelancer-projects",
   },
   {
-    name: "Reviwes",
+    name: "Reviews",
     icon: "record_voice_over",
     link: "freelancer-review",
   },
@@ -29,11 +29,6 @@ export const FreelancerSidebarData = [
     name: "Settings",
     icon: "settings",
     link: "freelancer-profile-settings",
-  },
-  {
-    name: "Logout",
-    icon: "power_settings_new",
-    link: "#",
   },
 ];
 
@@ -62,11 +57,6 @@ export const EmployerSidebarData = [
     name: "Settings",
     icon: "settings",
     link: "profile-settings",
-  },
-  {
-    name: "Logout",
-    icon: "power_settings_new",
-    link: "#",
   },
 ];
 

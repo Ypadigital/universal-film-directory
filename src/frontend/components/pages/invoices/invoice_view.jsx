@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Breadcrub from "../../Common/Breadcrub";
+import Breadcrumb from "../../Common/Breadcrumb";
 import { Logo } from "../../imagepath";
 
 const InvoiceView = () => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="Invoice View" />
+      <Breadcrumb title="Invoice View" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content">

@@ -19,7 +19,7 @@ const FreelancerFile = (props) => {
         <nav className="user-tabs mb-4">
           <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
             <li className="nav-item">
-              <Link className="nav-link" to="/freelancer-view-project-detail">
+              <Link className="nav-link" to="/freelancer-projects/:id">
                 Overview &amp; Discussions
               </Link>
             </li>

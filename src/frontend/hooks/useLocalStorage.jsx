@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { parseJSON } from "../utils/helpers";
 
 export const useLocalStorage = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      if (item && parseJSON(item)) return parseJSON(item);
+      if (item && !parseJSON(item)) return item;
+      if (!item) return initialValue;
     } catch (err) {
       console.error(err);
       return initialValue;

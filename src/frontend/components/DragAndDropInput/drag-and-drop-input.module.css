@@ -1,0 +1,78 @@
+.container label {
+  width: 100%;
+  height: 180px;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container.active svg path {
+  fill: var(--app-purple);
+}
+
+.container.active p {
+  background: -webkit-linear-gradient(45deg, #09009f, #ec4899 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container:hover {
+  cursor: pointer;
+}
+
+.container svg path {
+  fill: var(--app-gray);
+}
+
+.container:hover svg path {
+  fill: var(--app-purple);
+}
+
+span.error {
+  color: var(--app-red);
+}
+
+.images {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.images .image-card {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  background-color: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+.images .image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.images .image-card .delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: var(--app-red);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.images .image-card .delete svg path {
+  stroke: #fff;
+}

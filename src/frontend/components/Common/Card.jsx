@@ -4,15 +4,10 @@ import { EmployData } from "../Data/EmployData";
 import { FreelancerData } from "../Data/UserDatas";
 import Rating from "./Ratings";
 
-export const CardFeedBacks = ({ data }) => {
+export const CardFeedBacks = ({ data, reviews }) => {
   const user = EmployData.find((user) => user.id === data.userId);
   return (
     <div className="about-author">
-      <div className="about-author-img">
-        <div className="author-img-wrap">
-          <img className="img-fluid" alt="" src={user.image} />
-        </div>
-      </div>
       <div className="author-details">
         <a href="/" className="blog-author-name">
           {user.name}

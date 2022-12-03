@@ -26,7 +26,7 @@ function ProjectSideBar({ user, project }) {
   ];
 
   return (
-    <StickyBox offsetTop={20} offsetBottom={20}>
+    <StickyBox offsetTop={144} offsetBottom={20}>
       <div className="freelance-widget widget-author mt-2 pro-post">
         <div className="freelance-content">
           <div className="author-heading">

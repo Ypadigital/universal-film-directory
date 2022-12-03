@@ -1,28 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import $ from "jquery";
 import { Logo, company_img1 } from "../imagepath";
 import { WalletButton } from "../WalletButton";
+import { getSignature } from "../../utils/helpers";
+import { LoginUser } from "../../services/userService";
+import { useAppContext } from "../../contexts/appContext";
+import toast from "../../utils/toast";
+import useCanCallWeb3Method from "../../hooks/useCanCallWeb3Method";
+import { apiErrorMessage } from "../../utils/handleAPIErrors";
+import { useDataContext } from "../../contexts/dataContext";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const Header = (props) => {
-  const isLoggedIn = false;
-  const [isOpen, setisopen] = useState(false);
+  const [authToken, setAuthToken] = useLocalStorage("ufd-auth-token", null);
+  let { user } = useDataContext();
+  const { canRunWeb3, cannotCallWeb3Error } = useCanCallWeb3Method();
+  const { isLoggedIn, handleSetLogin, handleLogout } = useAppContext();
+  const [dashboardRoute, setdashboardRoute] = useState("");
+
+  if (user.data) user = user.data;
+
   useEffect(() => {
-    $(".main-nav a").on("click", function (e) {
-      if ($(this).parent().hasClass("has-submenu")) {
-        e.preventDefault();
-      }
-      if (!$(this).hasClass("submenu")) {
-        $("ul", $(this).parents("ul:first")).slideUp(350);
-        $("a", $(this).parents("ul:first")).removeClass("submenu");
-        $(this).next("ul").slideDown(350);
-        $(this).addClass("submenu");
-      } else if ($(this).hasClass("submenu")) {
-        $(this).removeClass("submenu");
-        $(this).next("ul").slideUp(350);
-      }
-    });
-  }, [isOpen]);
+    if (authToken) {
+      if (user && user.isContractor) setdashboardRoute("/dashboard");
+      if (user && !user.isContractor)
+        setdashboardRoute("/freelancer-dashboard");
+    }
+  }, [authToken, user]);
+
+  const handleLogin = async () => {
+    if (!canRunWeb3) return toast.error(cannotCallWeb3Error);
+
+    const toastId = toast.loading("Logging in User...");
+    try {
+      const signature = await getSignature();
+      const response = await LoginUser({ signature });
+      const user = response.data.data.user;
+      if (user.isContractor) setdashboardRoute("/dashboard");
+      if (!user.isContractor) setdashboardRoute("/freelancer-dashboard");
+      const authToken = response.data.data.authToken;
+      console.log(response.data.data.user);
+      setAuthToken(authToken);
+      handleSetLogin(true);
+      toast.update(toastId, "User Logged In Successfully");
+    } catch (error) {
+      let message;
+      if (error.response) message = apiErrorMessage(error);
+      else if (!error.response) message = error?.message || error;
+      if (message.includes(`action="signMessage"`))
+        message = "Signature request was denied";
+      toast.update(toastId, message, { type: "error" });
+    }
+  };
 
   const pathname = props.location.pathname.split("/")[1];
 
@@ -68,7 +97,7 @@ const Header = (props) => {
             </ul>
           </div>
           <ul className="nav header-navbar-rht">
-            <li
+            {/* <li
               className={
                 pathname === "blog-details" ? "active" : "chats_header"
               }
@@ -77,7 +106,7 @@ const Header = (props) => {
                 <i className="material-icons">chat</i>
               </Link>
               <div className="bagde_header">3</div>
-            </li>
+            </li> */}
 
             {/* User Menu */}
             <li className="nav-item dropdown has-arrow main-drop account-item">
@@ -90,103 +119,45 @@ const Header = (props) => {
                   <img src={company_img1} alt="" />
                 </span>
               </div>
-              {!!isLoggedIn && (
-                <div id="checkshow" className="dropdown-menu emp">
-                  <div className="drop-head">Account Details</div>
-                  <Link className="dropdown-item" to="/freelancer-dashboard">
-                    <i className="fa fa-cog" />
-                    Freelancer Dashboard
-                  </Link>
-                  <Link className="dropdown-item" to="/dashboard">
-                    <i className="fa fa-th-large" /> Employe Dashboard
-                  </Link>
-
-                  <Link className="dropdown-item" to="/register">
-                    <i className="fas fa-user" /> Register
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    <i className="material-icons">power_settings_new</i> Logout
-                  </Link>
-                </div>
-              )}
-              {!!!isLoggedIn && (
-                <div id="checkshow" className="dropdown-menu emp">
-                  <div className="drop-head">You are not Registered</div>
-                  <Link className="dropdown-item" to="/register">
-                    <i className="fas fa-user" />
-                    <span>Register</span>
-                  </Link>
-                </div>
-              )}
+              <div id="checkshow" className="dropdown-menu emp">
+                {!!isLoggedIn ? (
+                  <>
+                    <div className="drop-head">Account Details</div>
+                    {dashboardRoute ? (
+                      <>
+                        <Link className="dropdown-item" to={dashboardRoute}>
+                          <i className="fa fa-th-large" />
+                          Open Dashboard
+                        </Link>
+                      </>
+                    ) : (
+                      "Loading..."
+                    )}
+                    <button className="dropdown-item" onClick={handleLogout}>
+                      <i className="material-icons">power_settings_new</i>{" "}
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <div className="drop-head">Account Details</div>
+                    <Link className="dropdown-item" to="/register">
+                      <i className="fas fa-user" />
+                      <span>Register</span>
+                    </Link>
+                    <button className="dropdown-item" onClick={handleLogin}>
+                      <i className="fas fa-user" />
+                      <span>Login</span>
+                    </button>
+                  </>
+                )}
+              </div>
             </li>
             {/* /User Menu */}
             <li>
               <WalletButton />
             </li>
           </ul>
-
-          {/* ) : pathname === "freelancer-invoices" ||
-            pathname === "view-invoice" ||
-            pathname.includes("freelancer-") ? (
-            <ul className="nav header-navbar-rht">
-              <li className="nav-item dropdown account-item">
-                <a
-                  href="#"
-                  className="dropdown-toggle nav-link"
-                  data-toggle="dropdown"
-                >
-                  MY ACCOUNT
-                </a>
-                <div className="dropdown-menu emp">
-                  <div className="drop-head">Account Details</div>
-                  <Link className="dropdown-item" to="/user-account-details">
-                    <i className="material-icons">verified_user</i> View profile
-                  </Link>
-                  <div className="drop-head">Projects Settings</div>
-                  <Link className="dropdown-item" to="/manage-projects">
-                    <i className="material-icons">business_center</i> Projects
-                  </Link>
-                  <Link className="dropdown-item" to="/favourites">
-                    <i className="material-icons">local_play</i> Favourites
-                  </Link>
-                  <Link className="dropdown-item" to="/review">
-                    <i className="material-icons">pie_chart</i> Reviews
-                  </Link>
-                  <div className="drop-head">Account Details</div>
-                  <Link className="dropdown-item" to="/profile-settings">
-                    {" "}
-                    <i className="material-icons">settings</i> Profile Settings
-                  </Link>
-                  <Link className="dropdown-item" to="/index">
-                    <i className="material-icons">power_settings_new</i> Logout
-                  </Link>
-                </div>
-              </li>
-              <li className={pathname === "post-project" ? "active" : ""}>
-                <Link to="/post-project" className="login-btn">
-                  Post a Project{" "}
-                </Link>
-              </li>
-            </ul>
-          ) : (
-            <ul className="nav header-navbar-rht">
-              <li className={pathname === "register" ? "active" : ""}>
-                <Link to="/register" className="reg-btn">
-                  <i className="fas fa-user" /> Register
-                </Link>
-              </li>
-              <li className={pathname === "login" ? "active" : ""}>
-                <Link to="/login" className="log-btn">
-                  <i className="fas fa-lock" /> Login
-                </Link>
-              </li>
-              <li className={pathname === "post-project" ? "active" : ""}>
-                <Link to="/post-project" className="login-btn">
-                  Post a Project{" "}
-                </Link>
-              </li>
-            </ul>
-          )} */}
         </nav>
       </header>
       {/* /Header */}
