@@ -1,11 +1,11 @@
 import React from "react";
-import Breadcrub from "../Common/Breadcrub";
+import Breadcrumb from "../Common/Breadcrumb";
 
 const PrivacyPolicy = (props) => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="Privacy Policy" />
+      <Breadcrumb title="Privacy Policy" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content">

@@ -1,11 +1,11 @@
 import React from "react";
-import Breadcrub from "../Common/Breadcrub";
+import Breadcrumb from "../Common/Breadcrumb";
 
 const TermsCondition = () => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="Terms & Conditions" />
+      <Breadcrumb title="Terms & Conditions" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content">

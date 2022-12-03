@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { ProjectProposal, ProjectsData } from "../../Data/ProjectDatas";
-import Breadcrub from "../../Common/Breadcrub";
+import Breadcrumb from "../../Common/Breadcrumb";
 import { FreelancerData } from "../../Data/UserDatas";
 import { EmployData } from "../../Data/EmployData";
 import Rating from "../../Common/Ratings";
@@ -13,7 +13,7 @@ const ViewProposals = (props) => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="Proposals" />
+      <Breadcrumb title="Proposals" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content mt-5">

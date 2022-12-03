@@ -92,7 +92,7 @@ const VipProfile = () => {
             </div>
             {/* Blog Sidebar */}
             <div className="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
-              <StickyBox offsetTop={20} offsetBottom={20}>
+              <StickyBox offsetTop={144} offsetBottom={20}>
                 {/* Follow Widget */}
                 <div className="pro-post widget-box about-widget">
                   <h4 className="pro-title mb-0">About Me</h4>

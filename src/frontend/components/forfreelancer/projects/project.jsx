@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // Import Images
-import Breadcrub from "../../Common/Breadcrub";
+import Breadcrumb from "../../Common/Breadcrumb";
 import Filter from "../../Common/Filter";
 import SortsTags from "../../Common/Sorts&Tags";
 import { ProjectProposal, ProjectsData } from "../../Data/ProjectDatas";
@@ -12,7 +12,7 @@ const Projects = () => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="Projects" />
+      <Breadcrumb title="Projects" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content">

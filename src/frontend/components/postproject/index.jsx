@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ReactSummernote from "react-summernote";
 import "react-summernote/dist/react-summernote.css";
-import Breadcrub from "../Common/Breadcrub";
+import Breadcrumb from "../Common/Breadcrumb";
 
 const PostProject = (props) => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="Post a Project" />
+      <Breadcrumb title="Post a Project" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content">
