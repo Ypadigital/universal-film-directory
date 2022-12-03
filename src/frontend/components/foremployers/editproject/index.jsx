@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Document_Img } from "../../imagepath";
 import ReactSummernote from "react-summernote";
 import "react-summernote/dist/react-summernote.css";
-import Breadcrub from "../../Common/Breadcrub";
+import Breadcrumb from "../../Common/Breadcrumb";
 
 const EditProject = (props) => {
   useEffect(() => {
@@ -16,7 +16,7 @@ const EditProject = (props) => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="Edit Project" />
+      <Breadcrumb title="Edit Project" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content">
@@ -25,7 +25,7 @@ const EditProject = (props) => {
             <div className="col-md-12">
               <div className="text-end mb-4">
                 <Link
-                  to="/manage-projects"
+                  to="/dashboard/contractor/manage-projects"
                   className="btn btn-primary back-btn br-0"
                 >
                   <i className="fas fa-long-arrow-alt-left" /> Back to Project{" "}

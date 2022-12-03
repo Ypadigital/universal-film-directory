@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import StickyBox from "react-sticky-box";
 import DasboardSideBar from "../../Common/DasboardSideBar";
@@ -26,6 +26,14 @@ const FreelancerDashboard = (props) => {
       link: "freelancer-review",
     },
   ];
+
+  useEffect(() => {
+    document.body.className = "dashboard-page";
+    return () => {
+      document.body.className = "";
+    };
+  });
+
   return (
     <>
       {/* Page Content */}
@@ -49,7 +57,9 @@ const FreelancerDashboard = (props) => {
             ))}
           </div>
           {/* Chart Content */}
-          <Charts />
+          <p className="my-4 text-xl">Remember to work on charts!</p>
+
+          {/* <Charts /> */}
           {/* /Chart Content */}
         </div>
       </SideBar>

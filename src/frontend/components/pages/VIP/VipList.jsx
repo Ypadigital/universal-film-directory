@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Breadcrub from "../../Common/Breadcrub";
+import Breadcrumb from "../../Common/Breadcrumb";
 import Filter from "../../Common/Filter";
 import SortsTags from "../../Common/Sorts&Tags";
 import FavoriteModal from "../../Common/Modals/FavoriteModal";
@@ -10,7 +10,7 @@ const VipList = (props) => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrub title="VIP's" />
+      <Breadcrumb title="VIP's" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content">
