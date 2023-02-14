@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import styles from "./input.module.css";
+import styles from "./select.module.css";
 
 function Select({
   type = "text",
-  onClick,
   label,
+  placeholder,
   className,
   id,
   name,
@@ -35,7 +35,9 @@ function Select({
         </label>
       )}
       <select name={name} id={name} className="form-control select" {...rest}>
-        <option>Select an option</option>
+        <option defaultChecked value={""}>
+          {placeholder || "Select an option"}
+        </option>
         {children}
       </select>
       {error && <div className={`${styles["error-message"]}`}>{error}</div>}

@@ -1,26 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
-import { useCategoriesData } from "../hooks/useCategories";
-import { useProfilesData } from "../hooks/useProfilesData";
-import { useProjectsData } from "../hooks/useProjectsData";
-import { useServicesData } from "../hooks/useServices";
-import { useUserData } from "../hooks/useUserData";
+import React, { createContext, useContext } from "react";
 
 const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  const user = useUserData();
-  const projects = useProjectsData();
-  const categories = useCategoriesData();
-  const profiles = useProfilesData();
-  const services = useServicesData();
-
-  return (
-    <DataContext.Provider
-      value={{ user, projects, categories, profiles, services }}
-    >
-      {children}
-    </DataContext.Provider>
-  );
+  return <DataContext.Provider value={{}}>{children}</DataContext.Provider>;
 }
 
 export function useDataContext() {

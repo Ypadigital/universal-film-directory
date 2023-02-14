@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SideBar from "../../Common/SideBar";
-import { useDataContext } from "../../../contexts/dataContext";
 import {
   contractorDashboardCardInfo,
   getRandomKey,
 } from "../../../utils/helpers";
-import ProfileViewsChart from "../../Common/ProfileViewsChart";
 import StaticAnalyticsChart from "../../Common/StaticAnalyticsChart";
+import { useUserData } from "../../../hooks/useUserData";
 
 export default function Dashboard(props) {
   useEffect(() => {
@@ -16,42 +15,29 @@ export default function Dashboard(props) {
       document.body.className = "";
     };
   });
-  let { user } = useDataContext();
-  if (!user) return "";
-  if (user && !!!user.isLoading) {
-    user = user.data;
-  }
+  const { data: user } = useUserData();
+  // if (!user) return "";
+
   // const completedJobsCard =
-  const InfoCards = contractorDashboardCardInfo(user);
-  console.log(InfoCards);
+  const InfoCards = contractorDashboardCardInfo(user || {});
   return (
     <>
-      {/* Page Content */}
       <SideBar>
         <div className="dashboard-sec">
           <div className="row">
             {InfoCards.map((card, index) => (
-              <div className="col-6 col-lg-3">
+              <div className="col-6 col-lg-3" key={getRandomKey()}>
                 <InfoCard card={card} key={getRandomKey()} />
               </div>
             ))}
           </div>
-          {/* Chart Content */}
-
-          {/* <Charts /> */}
           <div className="row">
-            <div className="col-md-8">
-              <ProfileViewsChart />
-            </div>
             <div className="col-md-4 d-flex">
               <StaticAnalyticsChart />
             </div>
           </div>
-
-          {/* /Chart Content */}
         </div>
       </SideBar>
-      {/* /Page Content */}
     </>
   );
 }

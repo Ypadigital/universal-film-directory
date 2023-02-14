@@ -1,6 +1,5 @@
 import React from "react";
 import StickyBox from "react-sticky-box";
-import { useDataContext } from "../../contexts/dataContext";
 import {
   EmployerSidebarData,
   FreelancerSidebarData,

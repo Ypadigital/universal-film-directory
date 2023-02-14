@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import Chart from "react-apexcharts";
-import { useDataContext } from "../../../contexts/dataContext";
 import produce from "immer";
 import { lineChartOptions, getLastMonths } from "../../../utils/helpers";
+import { useUserData } from "../../../hooks/useUserData";
 
 export default function ProfileViewsChart() {
   const chartRef1 = useRef(null);
@@ -15,8 +15,9 @@ export default function ProfileViewsChart() {
     setfilter(value);
   };
 
-  let { user } = useDataContext();
-  const userData = user && !!!user.isLoading ? user.data : null;
+  const { data: user, isLoading } = useUserData();
+
+  const userData = user;
   const views = userData?.views || null;
 
   const sixMonthData = {

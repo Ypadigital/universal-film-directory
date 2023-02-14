@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDataContext } from "../../../contexts/dataContext";
+import { useProjectsData } from "../../../hooks/useProjectsData";
 import { getFullName } from "../../../utils/helpers";
 import SideBar from "../../Common/SideBar";
 import { Img_04, Flags_en } from "../../imagepath";
 
 const FreelancerProjectDetails = (props) => {
-  const { projects } = useDataContext();
+  const { data: projects } = useProjectsData();
+
   const projectId = props.match.params.id;
 
   let jobs = projects.data || [];

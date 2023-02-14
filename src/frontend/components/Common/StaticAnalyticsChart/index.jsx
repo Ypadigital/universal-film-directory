@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import Chart from "react-apexcharts";
-import { useDataContext } from "../../../contexts/dataContext";
 import produce from "immer";
 import { radialChartOptions } from "../../../utils/helpers";
+import { useUserData } from "../../../hooks/useUserData";
 
 export default function StaticAnalyticsChart() {
   const chartRef = useRef(null);
 
-  let { user } = useDataContext();
-  const userData = user && !!!user.isLoading ? user.data : null;
+  const { data: user, isLoading } = useUserData();
+  const userData = user;
   const staticAnalyticsData = {
     options: {
       ...radialChartOptions,
@@ -20,7 +20,11 @@ export default function StaticAnalyticsChart() {
   useEffect(() => {
     if (userData) {
       const newStaticAnalyticsData = produce(staticAnalyticsData, (draft) => {
-        draft.series[0] = [userData.jobSuccessRate.toFixed(1) || 100];
+        if (userData.jobSuccessRate) {
+          draft.series[0] = [userData.jobSuccessRate.toFixed(1)];
+        } else {
+          draft.series[0] = 100;
+        }
       });
 
       chartRef.current.chart.ctx.updateOptions({ ...newStaticAnalyticsData });

@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SideBar from "../../Common/SideBar";
-import { useDataContext } from "../../../contexts/dataContext";
 
 import SettingsForm from "./settingsForm";
+import { useCategoriesData } from "../../../hooks/useCategories";
+import { useUserData } from "../../../hooks/useUserData";
 
 const FreelancerSettings = (props) => {
-  let { categories, user } = useDataContext();
+  let { data: user } = useUserData();
 
-  categories = categories.data || [];
-  user = user?.data || null;
+  const { data: categories } = useCategoriesData();
 
   useEffect(() => {
     document.body.className = "dashboard-page";

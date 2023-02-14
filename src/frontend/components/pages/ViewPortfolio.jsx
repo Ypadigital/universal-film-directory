@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
-import { useDataContext } from "../../contexts/dataContext";
+import { useServicesData } from "../../hooks/useServices";
 import { CreateJob } from "../../services/jobService";
 import { apiErrorMessage } from "../../utils/handleAPIErrors";
 import { getRandomKey, sliderConfig } from "../../utils/helpers";
@@ -12,9 +12,7 @@ import HireModal from "../Common/Modals/HireModal";
 const ViewPortfolio = (props) => {
   const [isShowingHireModal, setisShowingHireModal] = useState(false);
   const { id } = useParams();
-  let { services } = useDataContext();
-
-  services = services.data || [];
+  let { data: services } = useServicesData();
 
   const service = services.find((service) => service._id === id) || null;
   console.log(service);
@@ -29,7 +27,7 @@ const ViewPortfolio = (props) => {
       toast.update(toastId, message, { type: "error" });
     }
   };
-  
+
   return (
     <>
       {service && (

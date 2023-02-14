@@ -44,11 +44,6 @@ export const EmployerSidebarData = [
     link: "manage-projects",
   },
   {
-    name: "Verify Identity",
-    icon: "person_pin",
-    link: "verify-identity",
-  },
-  {
     name: "Payments",
     icon: "wifi_tethering",
     link: "wallet",

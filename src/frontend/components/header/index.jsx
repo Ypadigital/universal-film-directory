@@ -8,22 +8,21 @@ import { useAppContext } from "../../contexts/appContext";
 import toast from "../../utils/toast";
 import useCanCallWeb3Method from "../../hooks/useCanCallWeb3Method";
 import { apiErrorMessage } from "../../utils/handleAPIErrors";
-import { useDataContext } from "../../contexts/dataContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useUserData } from "../../hooks/useUserData";
+import httpService from "../../services/httpService";
 
 const Header = (props) => {
   const [authToken, setAuthToken] = useLocalStorage("ufd-auth-token", null);
-  let { user } = useDataContext();
+  let { data: user } = useUserData();
   const { canRunWeb3, cannotCallWeb3Error } = useCanCallWeb3Method();
   const { isLoggedIn, handleSetLogin, handleLogout } = useAppContext();
   const [dashboardRoute, setdashboardRoute] = useState("");
 
-  if (user.data) user = user.data;
-
   useEffect(() => {
     if (authToken) {
-      if (user && user.isContractor) setdashboardRoute("/dashboard");
-      if (user && !user.isContractor)
+      if (user && user.role === "contractor") setdashboardRoute("/dashboard");
+      if (user && user.role === "freelancer")
         setdashboardRoute("/freelancer-dashboard");
     }
   }, [authToken, user]);
@@ -36,10 +35,12 @@ const Header = (props) => {
       const signature = await getSignature();
       const response = await LoginUser({ signature });
       const user = response.data.data.user;
-      if (user.isContractor) setdashboardRoute("/dashboard");
-      if (!user.isContractor) setdashboardRoute("/freelancer-dashboard");
+      const role = user.role;
+      if (role === "contractor") setdashboardRoute("/dashboard");
+      if (role === "freelancer") setdashboardRoute("/freelancer-dashboard");
       const authToken = response.data.data.authToken;
-      console.log(response.data.data.user);
+      httpService.setJwt(authToken);
+      console.log(response.data.data);
       setAuthToken(authToken);
       handleSetLogin(true);
       toast.update(toastId, "User Logged In Successfully");

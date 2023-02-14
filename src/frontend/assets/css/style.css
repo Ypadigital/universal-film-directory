@@ -4140,13 +4140,20 @@ html.menu-opened body header:before {
   outline: 0;
   -webkit-appearance: none;
 }
+
+option.checked {
+  color: #b0b2b6
+}
+
 .search-filter .card-header h2 {
   font-weight: 500;
   font-size: 20px;
   text-transform: uppercase;
   color: #161c2d;
 }
-.search-filter .card-header a {
+.search-filter .card-header button.clear {
+  all: unset;
+  cursor: pointer;
   font-weight: 600;
   font-size: 14px;
   color: var(--main-color);
@@ -13105,7 +13112,6 @@ body.chat-page {
 .gap-10 {
   gap: 10px;
 }
-
 
 .cursor-pointer {
   cursor: pointer;

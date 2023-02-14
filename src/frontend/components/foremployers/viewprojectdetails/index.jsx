@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDataContext } from "../../../contexts/dataContext";
+import { useProjectsData } from "../../../hooks/useProjectsData";
 import { formatDate, getFullName } from "../../../utils/helpers";
 import toast from "../../../utils/toast";
 import WriteReviwerModal from "../../Common/Modals/WriteReviwerModal";
@@ -10,10 +10,10 @@ import { Flags_en, Developer_01 } from "../../imagepath";
 const ViewProjectdetails = (props) => {
   const [showReviewModal, setshowReviewModal] = useState(false);
   const [selectedJob, setselectedJob] = useState(null);
-  const { projects } = useDataContext();
+  const { data: projects } = useProjectsData();
   const projectId = props.match.params.id;
 
-  let jobs = projects.data || [];
+  let jobs = projects;
   let project = null;
 
   if (!!!projects.isLoading) {

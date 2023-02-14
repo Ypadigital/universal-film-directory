@@ -11,9 +11,9 @@ import { UpdateService } from "../../../../services/serviceService";
 import { apiErrorMessage } from "../../../../utils/handleAPIErrors";
 import { createImage } from "../../../../services/imagesService";
 import { omit } from "lodash";
-import { useDataContext } from "../../../../contexts/dataContext";
 import { Select } from "../../Select";
 import ModalFrame from "../ModalFrame";
+import { useCategoriesData } from "../../../../hooks/useCategories";
 
 const validationSchema = Yup.object({
   title: Yup.string().required().label("Title"),
@@ -34,7 +34,7 @@ function EditPortfolioProject({
   setIsActive,
   onSetSelectedService,
 }) {
-  let { categories } = useDataContext();
+  const { data: categories } = useCategoriesData();
 
   categories = categories.data || [];
 

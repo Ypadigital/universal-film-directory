@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { TopDevelopers } from "./topdevelopers";
 // Import Images
@@ -6,6 +6,12 @@ import { Banner_img, Icon_01, Icon_02, Icon_03, Subscribe } from "../imagepath";
 import { CategoriesData } from "../Data/Categories";
 
 const Home = () => {
+  const [query, setQuery] = useState("");
+  const handleSubmit = (e) => {
+    if (query === "" || query === null) return;
+    window.location.href = `/freelancer?keyword=${query}`;
+    e.preventDefault();
+  };
   return (
     <>
       {/* Home Banner */}
@@ -19,16 +25,20 @@ const Home = () => {
                   <span className="orange-text">And movie services</span>
                 </h1>
                 <p>With the world's #1 Films service marketplace.</p>
-                <form className="form" name="store" id="store">
+                <form
+                  className="form"
+                  name="store"
+                  id="store"
+                  onSubmit={handleSubmit}
+                >
                   <div className="form-inner">
                     <div className="input-group">
-                       
                       <input
-                        type="email"
+                        onChange={(e) => setQuery(e.target.value)}
                         className="form-control"
                         placeholder="Search here"
                       />
-                      <button className="btn btn-primary sub-btn" type="button">
+                      <button type="submit" className="btn btn-primary sub-btn">
                         Search Now
                       </button>
                     </div>
@@ -127,7 +137,7 @@ const Home = () => {
       </section>
       {/*- /Developed Project  */}
       {/* Projects */}
-      <section className="section projects">
+      <section className="section projects" hidden>
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-12 mx-auto">
@@ -207,7 +217,7 @@ const Home = () => {
       </section>
       {/* End Subscribe */}
       {/* Top Instructor */}
-      <TopDevelopers />
+      {/* <TopDevelopers /> */}
       {/* End Developer */}
     </>
   );

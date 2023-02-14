@@ -11,6 +11,10 @@
   margin-bottom: 15px;
 }
 
+.option:checked {
+  color: #b0b2b6;
+}
+
 .container select {
   /* border-radius: 12px; */
   border: 1px solid #dfdfdf;
@@ -37,6 +41,10 @@
 
 .container.error select {
   border: 1px solid red;
+}
+
+option:checked {
+  color: #b0b2b6;
 }
 
 .error-message {
