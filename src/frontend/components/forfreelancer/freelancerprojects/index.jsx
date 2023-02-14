@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../Common/Pagination";
 import SideBar from "../../Common/SideBar";
-import { useDataContext } from "../../../contexts/dataContext";
 import { formatDate, getRandomKey } from "../../../utils/helpers";
+import { useProjectsData } from "../../../hooks/useProjectsData";
 
 const FreelacerProjects = (props) => {
   let query = props.location.search.split("?")[1] || "Ongoing";
-  const { projects } = useDataContext();
-  let jobs = projects.data;
+  const { data: projects } = useProjectsData();
+  let jobs = projects;
   if (!!!projects.isLoading) {
     jobs = jobs.filter((project) => project.status === query);
   }

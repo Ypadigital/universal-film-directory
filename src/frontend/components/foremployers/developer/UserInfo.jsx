@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getAverage, getFullName } from "../../../utils/helpers";
 import Rating from "../../Common/Ratings";
-import { Flags_pl } from "../../imagepath";
 
 function UserInfo({ freelancer }) {
   return (

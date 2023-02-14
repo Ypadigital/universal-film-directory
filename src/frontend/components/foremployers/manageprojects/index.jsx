@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../Common/Pagination";
 import SideBar from "../../Common/SideBar";
-import { useDataContext } from "../../../contexts/dataContext";
 import { formatDate, getFullName } from "../../../utils/helpers";
 import WriteReviwerModal from "../../Common/Modals/WriteReviwerModal";
+import { useProjectsData } from "../../../hooks/useProjectsData";
 
 const Manageprojects = (props) => {
   const [showReviewModal, setshowReviewModal] = useState(false);
   const [selectedJob, setselectedJob] = useState(null);
   let query = props.location.search.split("?")[1] || "All";
-  const { projects } = useDataContext();
-  let jobs = projects.data;
+  const { data: projects } = useProjectsData();
+  let jobs = projects;
   if (!!!projects.isLoading) {
     if (query !== "All") {
       jobs = jobs.filter((job) => job.status === query);
@@ -217,8 +217,7 @@ export const RegularProjectCard = ({
                 </div>
               ) : (
                 <div className="prj-proposal-count text-center">
-                  <span>5</span>
-                  <h3>Proposals</h3>
+                  <h3>Awaiting Acceptance</h3>
                 </div>
               )}
             </div>
@@ -290,8 +289,7 @@ export const PendingProjectCard = ({
                 </div>
               ) : (
                 <div className="prj-proposal-count text-center">
-                  <span>5</span>
-                  <h3>Proposals</h3>
+                  <h3>Awaiting Acceptance</h3>
                 </div>
               )}
             </div>

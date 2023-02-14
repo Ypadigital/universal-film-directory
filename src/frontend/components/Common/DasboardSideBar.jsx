@@ -1,18 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDataContext } from "../../contexts/dataContext";
+import { useUserData } from "../../hooks/useUserData";
 import { getFullName, unkownImageUrl } from "../../utils/helpers";
 
 function DasboardSideBar({ data }) {
   const pathname = window.location.pathname.split("/")[1];
-  let { user: currentUser } = useDataContext();
+  const { data: currentUser, isLoading } = useUserData();
   if (!currentUser) return "";
-  if (currentUser && !!!currentUser.isLoading) {
-    currentUser = currentUser.data;
-  }
   return (
     <>
-      {currentUser && !!!currentUser.isLoading && (
+      {currentUser && !!!isLoading && (
         <div className="settings-widget">
           <div className="settings-header d-sm-flex flex-row text-center text-sm-start align-items-center">
             <img

@@ -15,8 +15,9 @@ import CloseIcon from "../../../Icons/CloseIcon";
 import { createImage } from "../../../../services/imagesService";
 import { omit } from "lodash";
 import { getServiceCategories } from "../../../../services/categoryService";
-import { useDataContext } from "../../../../contexts/dataContext";
 import { Select } from "../../Select";
+import { useCategoriesData } from "../../../../hooks/useCategories";
+import { useUserData } from "../../../../hooks/useUserData";
 
 const validationSchema = Yup.object({
   title: Yup.string().required().label("Title"),
@@ -32,9 +33,8 @@ const validationSchema = Yup.object({
 });
 
 function CreatePortfolioProject() {
-  let { categories } = useDataContext();
-
-  categories = categories.data || [];
+  const { data: categories } = useCategoriesData();
+  const { data: currentUser, mutate } = useUserData();
 
   const { canRunWeb3, cannotCallWeb3Error } = useCanCallWeb3Method();
 
@@ -65,6 +65,7 @@ function CreatePortfolioProject() {
         const service = await CreateService(payload);
         console.log(service);
         toast.update(toastId, "Portfolio was added Successfully");
+        mutate();
       } catch (error) {
         const message = apiErrorMessage(error);
         toast.update(toastId, message, { type: "error" });

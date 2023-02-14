@@ -3,11 +3,15 @@ import { useHistory } from "react-router-dom";
 import StickyBox from "react-sticky-box";
 import { countries, getRandomKey } from "../../utils/helpers";
 
-function Filter({ project, categories }) {
+function Filter({ project, categories, set }) {
   const router = useHistory();
-  const clearFilters = () => router.push("/freelancer");
+  const clearFilters = () => {
+    
+    router.push("/freelancer");
+  };
   console.log(router);
   const [query, setquery] = useState({});
+
   return (
     <StickyBox offsetTop={144} offsetBottom={20}>
       {/* Search Filter */}

@@ -2,9 +2,7 @@ import useSWR from "swr";
 import { useEffect, useState } from "react";
 // import httpService from "../services/httpService";
 import { apiErrorMessage } from "../utils/handleAPIErrors";
-import { useAppContext } from "../contexts/appContext";
 import toast from "../utils/toast";
-import { getAuthToken } from "../utils/helpers";
 import { getUserDetails } from "../services/userService";
 import { useLoadingContext } from "../contexts/loadingContext";
 import { useLocalStorage } from "./useLocalStorage";
@@ -13,10 +11,9 @@ let url = process.env.REACT_APP_BACKEND_BASE_URL + "/users/me";
 
 function useUserData() {
   const { setIsLoading } = useLoadingContext();
-  const [authToken, setAuthToken] = useLocalStorage("ufd-auth-token", null);
+  const [authToken] = useLocalStorage("ufd-auth-token", null);
   const initialState = null;
   const [data, setData] = useState(null);
-  // console.log(!!authToken);
   const fetcher = async (url) => {
     try {
       let response = await getUserDetails();
@@ -26,7 +23,6 @@ function useUserData() {
       return user;
     } catch (error) {
       let message;
-      console.log("error");
       if (error.response) message = apiErrorMessage(error);
       else message = error?.message || error;
       toast.error(message);

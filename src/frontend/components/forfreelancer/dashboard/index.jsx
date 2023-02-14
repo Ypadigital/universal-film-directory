@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SideBar from "../../Common/SideBar";
-import { useDataContext } from "../../../contexts/dataContext";
 import {
   freelancerDashboardCardInfo,
   getRandomKey,
 } from "../../../utils/helpers";
 import ProfileViewsChart from "../../Common/ProfileViewsChart";
 import StaticAnalyticsChart from "../../Common/StaticAnalyticsChart";
+import { useUserData } from "../../../hooks/useUserData";
 
 const FreelancerDashboard = (props) => {
   useEffect(() => {
@@ -16,13 +16,11 @@ const FreelancerDashboard = (props) => {
       document.body.className = "";
     };
   });
-  let { user } = useDataContext();
-  if (!user) return "";
-  if (user && !!!user.isLoading) {
-    user = user.data;
-  }
+  const { data: user } = useUserData();
+  // if (!user) return "";
+  console.log({ user });
   // const completedJobsCard =
-  const InfoCards = freelancerDashboardCardInfo(user);
+  const InfoCards = freelancerDashboardCardInfo(user || {});
   return (
     <>
       {/* Page Content */}
@@ -30,7 +28,7 @@ const FreelancerDashboard = (props) => {
         <div className="dashboard-sec">
           <div className="row">
             {InfoCards.map((card, index) => (
-              <div className="col-6 col-lg-4">
+              <div className="col-6 col-lg-4" key={getRandomKey()}>
                 <InfoCard card={card} key={getRandomKey()} />
               </div>
             ))}

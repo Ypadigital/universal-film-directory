@@ -18,8 +18,8 @@ function Input({
   let placeholder = rest.placeholder;
   if (formik) {
     Object.assign(rest, {
-      onChange: formik?.handleChange,
-      value: formik?.values[name],
+      onChange: formik.handleChange,
+      value: formik.values[name],
     });
   }
   return (

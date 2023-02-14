@@ -9,7 +9,9 @@ export const setAuthToken = (token) => {
 };
 
 export const getAuthToken = () => {
-  return localStorage.getItem("ufd-auth-token");
+  const authToken = localStorage.getItem("ufd-auth-token");
+  if (authToken.match(/^"/)) return JSON.parse(authToken);
+  return authToken;
 };
 
 export const getProvider = () => {
@@ -387,4 +389,8 @@ export const sliderConfig = {
   arrows: false,
   autoplaySpeed: 2000,
   centerPadding: "0px",
+};
+
+export const queryToJSON = (query) => {
+  return Object.fromEntries(new URLSearchParams(query));
 };

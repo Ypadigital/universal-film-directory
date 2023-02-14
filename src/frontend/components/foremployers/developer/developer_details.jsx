@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StickyBox from "react-sticky-box";
-import { useDataContext } from "../../../contexts/dataContext";
+import { getProfileById } from "../../../services/profileService";
+import { apiErrorMessage } from "../../../utils/handleAPIErrors";
 import {
   formatTotalExperience,
   getProfileLink,
@@ -9,7 +11,6 @@ import {
 } from "../../../utils/helpers";
 import toast from "../../../utils/toast";
 import { CardFeedBacks } from "../../Common/Card";
-import HireModal from "../../Common/Modals/HireModal";
 import InvatationModal from "../../Common/Modals/InvatationModal";
 // Import Images
 import {
@@ -27,14 +28,27 @@ import UserInfo from "./UserInfo";
 import Works from "./Works";
 
 const DeveloperDetails = (props) => {
-  let { profiles } = useDataContext();
-  const freelancers = profiles.data || [];
+  const [isLoading, setisLoading] = useState(false);
   const { id } = useParams();
-  const details = freelancers.find((x) => (x._id = id)) || null;
+  const [details, setDetails] = useState(null);
   let profileLink;
-  if (details) {
-    profileLink = getProfileLink(details._id);
-  }
+  if (details) profileLink = getProfileLink(details._id);
+
+  useEffect(() => {
+    setisLoading(true);
+    (async () => {
+      try {
+        let response = await getProfileById(id);
+        response = await response.data;
+        let profile = response.data;
+        setDetails(profile);
+      } catch (error) {
+        toast.error(apiErrorMessage(error));
+      } finally {
+        setisLoading(false);
+      }
+    })();
+  }, [id]);
 
   const feedBacksData = [
     {
@@ -57,7 +71,9 @@ const DeveloperDetails = (props) => {
 
   return (
     <>
-      {!!details && (
+      {isLoading && <div className="loading" />}
+      {!isLoading && !details && <div>No Profile Found</div>}
+      {!isLoading && details && (
         <>
           <div className="breadcrumb-bar" />
 
@@ -178,7 +194,7 @@ const DeveloperDetails = (props) => {
                           <h6>{details.location}</h6>
                         </li>
                       </ul>
-                    </div> 
+                    </div>
                     <div className="pro-post widget-box language-widget">
                       <h4 className="pro-title mb-0">Language Skills</h4>
                       <ul className="latest-posts pro-content">
@@ -188,7 +204,7 @@ const DeveloperDetails = (props) => {
                           </li>
                         ))}
                       </ul>
-                    </div> 
+                    </div>
                     <div className="pro-post category-widget">
                       <div className="widget-title-box">
                         <h4 className="pro-title">Social Links</h4>
@@ -199,7 +215,7 @@ const DeveloperDetails = (props) => {
                           return <li key={getRandomKey()}>{value}</li>;
                         })}
                       </ul>
-                    </div> 
+                    </div>
                     <div className="pro-post widget-box post-widget">
                       <h3 className="pro-title">Profile Link</h3>
                       <div className="pro-content">
@@ -225,7 +241,7 @@ const DeveloperDetails = (props) => {
                           </div>
                         </div>
                       </div>
-                    </div> 
+                    </div>
                     <div className="pro-post widget-box post-widget">
                       <h3 className="pro-title">Share</h3>
                       <div className="pro-content">
@@ -233,9 +249,9 @@ const DeveloperDetails = (props) => {
                           <i className="fas fa-share-alt" /> Share
                         </button>
                       </div>
-                    </div> 
+                    </div>
                   </StickyBox>
-                </div> 
+                </div>
               </div>
             </div>
           </div>

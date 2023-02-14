@@ -3,13 +3,12 @@ import CreatePortfolioProject from "../../Common/Modals/CreatePortfolioProject";
 import SideBar from "../../Common/SideBar";
 import Pagination from "../../Common/Pagination";
 import { FrelancerPortfolio } from "../../Data/UserDatas";
-import { useDataContext } from "../../../contexts/dataContext";
 import EditPortfolioProject from "../../Common/Modals/EditPortfolioProject.jsx";
+import { useUserData } from "../../../hooks/useUserData";
 
 const FreelancerPortfolio = (props) => {
   const [isEditModalActive, setisEditModalActive] = useState(false);
-  const { user } = useDataContext();
-  let currentUser = user.data || null;
+  const { data: currentUser } = useUserData();
 
   useEffect(() => {
     document.body.className = "dashboard-page";
@@ -19,7 +18,7 @@ const FreelancerPortfolio = (props) => {
   });
   const [selectedService, setSelectedService] = useState(null);
 
-  if (!!!user.isLoading && !currentUser) return "";
+  if (!currentUser) return "";
 
   return (
     <>

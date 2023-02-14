@@ -7,14 +7,14 @@ import { Input } from "../Common/Input";
 import useCanCallWeb3Method from "../../hooks/useCanCallWeb3Method";
 import { RegisterUser } from "../../services/userService";
 import { apiErrorMessage } from "../../utils/handleAPIErrors";
-import { getSignature, getSigner, setAuthToken } from "../../utils/helpers";
+import { getSignature, setAuthToken } from "../../utils/helpers";
 import toast from "../../utils/toast";
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required(),
   lastName: Yup.string().required(),
   email: Yup.string().email().required(),
-  isContractor: Yup.boolean().required("Required"),
+  role: Yup.string().oneOf(["contractor", "freelancer"]).required("Required"),
 });
 
 const Register = (props) => {
@@ -23,7 +23,7 @@ const Register = (props) => {
     firstName: "",
     lastName: "",
     email: "",
-    isContractor: false,
+    role: "freelancer",
   };
   const handleSubmit = (values) => {
     (async () => {
@@ -36,7 +36,7 @@ const Register = (props) => {
         setAuthToken(user.data.data);
         toast.update(toastId, "User Registered Successfully", {
           onClose: () => {
-            if (values.isContractor) props.history.push("/dashboard");
+            if (values.role === "contractor") props.history.push("/dashboard");
             else props.history.push("/freelancer-dashboard");
           },
         });
@@ -52,15 +52,13 @@ const Register = (props) => {
     validationSchema,
     onSubmit: handleSubmit,
   });
-  const isContractor = formik.values.isContractor;
+  const role = formik.values.role;
   const tabClass = (name) => {
-    if (isContractor && name === "contractor") return "nav-link active";
-    if (!isContractor && name === "freelancer") return "nav-link active";
+    if (role === name) return "nav-link active";
     return "nav-link";
   };
   const switchTab = (name) => {
-    if (name === "contractor") formik.setFieldValue("isContractor", true);
-    else formik.setFieldValue("isContractor", false);
+    formik.setFieldValue("role", name);
   };
 
   useEffect(() => {
@@ -74,7 +72,7 @@ const Register = (props) => {
               e.type === "focus" || this.value.length > 0
             );
         })
-        .trigger("blur");
+        // .trigger("blur");
     }
     document.body.className = "account-page";
     return () => {

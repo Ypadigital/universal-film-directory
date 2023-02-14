@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 
-import { useDataContext } from "../../../contexts/dataContext";
+import { useProjectsData } from "../../../hooks/useProjectsData";
 import {
   formatReviews,
   getRandomKey,
@@ -16,9 +16,9 @@ const Review = (props) => {
       document.body.className = "";
     };
   });
-  const { projects } = useDataContext();
-  let jobs = projects.data;
-  if (!!!projects.isLoading) {
+  const { data: projects, isLoading } = useProjectsData();
+  let jobs = projects;
+  if (!!!isLoading) {
     jobs = jobs.filter((project) => project.status === "Completed");
   }
   if (!jobs.length) return "Loading...";
